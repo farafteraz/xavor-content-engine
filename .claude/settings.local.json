@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p digests)",
+      "Bash(textutil -convert txt -stdout \"samples/june-sentinel.md\")",
+      "Bash(python3 -m venv .venv)",
+      "Bash(.venv/bin/pip install *)",
+      "Bash(.venv/bin/python -c \"import anthropic; print\\('anthropic', anthropic.__version__\\)\")",
+      "Bash(.venv/bin/python -c ' *)",
+      "Read(//Users/farazmalik/.claude/projects/-Users-farazmalik-Desktop-Work-Claude-PROJECTS-Xavor-Content-Engine/memory/**)",
+      "Bash(printf -- '- [Stat-conflation failure mode]\\(stat-conflation-failure-mode.md\\) — QC misses base-population transplants; audit corpus-level after runs\\\\n')",
+      "Bash(ssh -o BatchMode=yes -o ConnectTimeout=5 -T git@github.com)",
+      "Bash(git config *)",
+      "Read(//Users/farazmalik/.ssh/**)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git -c 'user.name=Faraz Malik' -c user.email=marketing@xavor.com commit -q -m 'Xavor Content Engine: monthly Sentinel-to-calendar pipeline with July 2026 run *)"
+    ]
+  }
+}

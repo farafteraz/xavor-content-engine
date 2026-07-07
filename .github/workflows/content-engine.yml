@@ -1,0 +1,49 @@
+name: Xavor Content Engine — Monthly Run
+
+on:
+  schedule:
+    # 1st of every month, 05:00 UTC (10:00 AM PKT) — digests for the prior month
+    # are all in by the last Sunday, so the corpus is complete.
+    - cron: "0 5 1 * *"
+  workflow_dispatch:
+    inputs:
+      month:
+        description: "Target month YYYY-MM (blank = next month)"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Run the pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CONTENT_MODEL: claude-opus-4-8
+        run: |
+          if [ -n "${{ github.event.inputs.month }}" ]; then
+            python run.py --month "${{ github.event.inputs.month }}"
+          else
+            python run.py
+          fi
+
+      - name: Commit the month's output
+        run: |
+          git config user.name "content-engine"
+          git config user.email "actions@github.com"
+          git add output/
+          git commit -m "Monthly content run $(date -u +%Y-%m)" || echo "nothing to commit"
+          git push
