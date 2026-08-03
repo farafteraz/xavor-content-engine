@@ -21,6 +21,8 @@ Environment (env vars or a local .env file; never hardcoded):
   ANTHROPIC_API_KEY   required
   CONTENT_MODEL       default: claude-opus-4-8
   SENTINEL_REPO       default: farafteraz/Xavor-Sentinel (digests/ dir is fetched)
+  SENTINEL_TOKEN      required while the Sentinel repo is private — a GitHub token
+                      with read access to its contents (GH_TOKEN/GITHUB_TOKEN also work)
 """
 
 import argparse
@@ -57,6 +59,9 @@ load_env()
 
 MODEL = os.environ.get("CONTENT_MODEL", "claude-opus-4-8")
 SENTINEL_REPO = os.environ.get("SENTINEL_REPO", "farafteraz/Xavor-Sentinel")
+SENTINEL_TOKEN = (os.environ.get("SENTINEL_TOKEN")
+                  or os.environ.get("GH_TOKEN")
+                  or os.environ.get("GITHUB_TOKEN"))
 
 try:
     import anthropic
@@ -126,16 +131,38 @@ def slug(s):
 
 # ── Stage 0: ingest ───────────────────────────────────────────────────────────
 
+def _github_get(url, raw=False):
+    """GET a GitHub API URL, authenticated when a token is available.
+
+    The Sentinel repo is private, and GitHub answers a private repo with 404 rather
+    than 403 when the request is unauthenticated — so a missing token looks exactly
+    like a missing directory. fetch_digests_from_github() says so in its error.
+    """
+    req = urllib.request.Request(url)
+    req.add_header("Accept", "application/vnd.github.raw"
+                             if raw else "application/vnd.github+json")
+    if SENTINEL_TOKEN:
+        req.add_header("Authorization", f"Bearer {SENTINEL_TOKEN}")
+    with urllib.request.urlopen(req) as r:
+        return r.read()
+
+
 def fetch_digests_from_github():
     url = f"https://api.github.com/repos/{SENTINEL_REPO}/contents/digests"
     try:
-        with urllib.request.urlopen(url) as r:
-            listing = json.loads(r.read())
+        listing = json.loads(_github_get(url))
     except Exception as e:
+        hint = (
+            "SENTINEL_TOKEN is not set. The Sentinel repo is private, so an "
+            "unauthenticated read returns 404 even though the digests exist. Set "
+            "SENTINEL_TOKEN to a GitHub token with read access to its contents."
+            if not SENTINEL_TOKEN else
+            "Check that SENTINEL_TOKEN is valid, unexpired, and has contents read "
+            "access to this repo."
+        )
         sys.exit(
-            f"Could not list digests in {SENTINEL_REPO} ({e}).\n"
-            "Either merge the Sentinel digest-persistence patch (see README) or pass "
-            "--corpus <file> with the month's digests."
+            f"Could not list digests in {SENTINEL_REPO} ({e}).\n{hint}\n"
+            "Or pass --corpus <file> with the month's digests."
         )
     files = sorted(
         (f for f in listing if f["name"].endswith((".md", ".txt"))),
@@ -145,8 +172,8 @@ def fetch_digests_from_github():
         sys.exit(f"No digest files found in {SENTINEL_REPO}/digests.")
     parts = []
     for f in files:
-        with urllib.request.urlopen(f["download_url"]) as r:
-            parts.append(f"<!-- digest: {f['name']} -->\n\n{r.read().decode()}")
+        body = _github_get(f["url"], raw=True).decode()
+        parts.append(f"<!-- digest: {f['name']} -->\n\n{body}")
         print(f"  fetched {f['name']}")
     return "\n\n---\n\n".join(parts)
 

@@ -37,8 +37,16 @@ cp .env.example .env   # then put your real ANTHROPIC_API_KEY in .env
 ```
 
 Config is env-only (`.env` is gitignored): `ANTHROPIC_API_KEY` (required),
-`CONTENT_MODEL` (default `claude-opus-4-8`), `SENTINEL_REPO` (default
-`farafteraz/Xavor-Sentinel`).
+`SENTINEL_TOKEN` (required for auto-fetch — see below), `CONTENT_MODEL` (default
+`claude-opus-4-8`), `SENTINEL_REPO` (default `farafteraz/Xavor-Sentinel`).
+
+`Xavor-Sentinel` is a private repo, so Stage 0 has to authenticate to read its digests.
+Without a token GitHub returns 404 — indistinguishable from the directory not existing.
+Locally, the simplest option is to borrow your `gh` login instead of storing a key:
+
+```bash
+SENTINEL_TOKEN="$(gh auth token)" .venv/bin/python run.py
+```
 
 ## Run
 
@@ -57,14 +65,19 @@ Then review `output/<month>/3-calendar.md` + `output/<month>/posts/` and check
 ## Monthly trigger
 
 `.github/workflows/content-engine.yml` runs the pipeline on the 1st of each month and
-commits the output to this repo. To activate: push this directory to a GitHub repo, add
-`ANTHROPIC_API_KEY` as an Actions secret, done. Manual runs also work from the Actions
-tab (workflow_dispatch, with an optional month input).
+commits the output to this repo. Manual runs also work from the Actions tab
+(workflow_dispatch, with an optional month input).
 
-The automatic digest feed requires one small change to the Sentinel repo — the Action
-currently emails digests and saves nothing. Apply `sentinel-patch/README.md` (about ten
-lines) so each weekly digest is also committed to `digests/` in Xavor-Sentinel, where
-Stage 0 fetches it. Until that's merged, run with `--corpus`.
+It needs two Actions secrets:
+
+- `ANTHROPIC_API_KEY`
+- `SENTINEL_TOKEN` — a token with read access to `Xavor-Sentinel`'s contents. The job's
+  built-in `GITHUB_TOKEN` will not do: it is scoped to this repo only, so it cannot read
+  a second private repo.
+
+The digest feed is live — `sentinel-patch/` was merged into Xavor-Sentinel as PR #1, and
+each Sunday's digest is committed to `digests/YYYY-MM-DD.md` there. That folder is kept
+only as a record of the change; nothing needs applying.
 
 ## Tuning each stage
 

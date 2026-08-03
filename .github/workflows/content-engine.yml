@@ -33,6 +33,9 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CONTENT_MODEL: claude-opus-4-8
+          # Xavor-Sentinel is private, and the job's built-in GITHUB_TOKEN is scoped to
+          # this repo only — reading another private repo needs its own token.
+          SENTINEL_TOKEN: ${{ secrets.SENTINEL_TOKEN }}
         run: |
           if [ -n "${{ github.event.inputs.month }}" ]; then
             python run.py --month "${{ github.event.inputs.month }}"
