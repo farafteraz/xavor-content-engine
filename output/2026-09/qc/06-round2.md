@@ -1,57 +1,44 @@
-# Editor's memo — Post 6 (carousel, N4)
+# Editor's Memo — Post 6 (explainer reel, N4)
 
 **Overall verdict: PASS**
 
-Clean, disciplined draft. The numbers trace, the voice holds, and it lands the intended registration for a VP of Engineering. Detail below.
+The draft does the hard thing this slot asked for: it concedes the robot as settled and moves the CTO's attention to the integration layer without overclaiming. Evidence traces cleanly. No banned vocabulary, no reframes hiding in the frame breaks. One improvable weakness noted at the end.
 
-## Per-check
+## Per-check results
 
-**V — Vocabulary: PASS.** Word-by-word scan finds no banned terms. "Fleet data pipelines," "edge compute," "digital twin" are precision technical terms, explicitly allowed. No "seamless," "robust," "scalable," "optimize," no dead openers. Clean.
+**V — Vocabulary: PASS.** Scanned word by word. No banned terms. "ecosystem" appears in "the NVIDIA ecosystem," which is the explicitly permitted literal named-vendor use (§5). Clean.
 
-**S — Structures: PASS.** I hunted specifically for cross-sentence reframes here, since the angle ("the robot works, the open question is everything around it") is exactly the shape that tempts a "not X, but Y" construction.
+**S — Structures: PASS.** The risk here was "The robot is the settled part / the integration is the open question" reading as a contrastive reframe. It survives because it corrects a specific scope claim (what is done vs. what remains) rather than manufacturing false insight — and it's grounded in real, distinct facts, not a rhetorical pivot. Frame 3 ("It stopped being whether humanoids work") is a factual shift in the buyer conversation (E33), not a setup-and-negate. Frame 4's "The robot ships as a finished product. Its integration into your floor is a separate build" is two positive claims, not X-not-Y. No triple bursts, no rule-of-three closer (Frame 5 lists three integration items but they're a concrete parts list, not a punchy closer), no cliffhanger pivots, no "This is" unveilings, no slogan tags.
 
-- Slide 1: "The robot works at production accuracy. What decides the rollout is the line around it." This states two positive facts in sequence. It is not a negation reframe — nothing is rejected. It corrects scope by naming what's actually decided. Legal.
-- Slide 3: "The hardware clears production accuracy. The unsolved work is everything the robot connects to." Same read — positive claim, then positive claim about a different thing. No "isn't just," no pivot on but/actually. Passes.
-- Slide 5: "That work is engineering, not procurement." This is the one to scrutinize. It is contrastive, but it corrects a specific category the reader would otherwise misfile (buying vs. building). §6.1 permits contrast that corrects scope. It's borderline but defensible because "procurement" is a concrete, falsifiable mischaracterization of the work, not a rhetorical foil. I'll allow it.
+**M — Metaphor: PASS.** No analogies, no banned setups or metaphor verbs. "lands on you" / "before the hardware lands" is literal (the hardware physically arrives). "keeps the physical line and its model in sync" is literal engineering. Clean.
 
-No triple bursts, no rule-of-three closer, no "This is" unveiling (slide 2's "This is production, not a demo reel" leads with the subject, not an unveiling — acceptable), no cliffhanger pivots, no slogan tags.
+**F — Formatting: PASS.** No emojis, hashtags, exclamations, bold/italics/caps in body, no em dashes. Reel format, not carousel, so the 25-word cap doesn't bind — but frames are appropriately short. Longest frame (2) is ~22 words. Fine.
 
-**M — Metaphor: PASS.** Zero analogies. "The line around it" is literal (an actual production line), not figurative. No banned setups or metaphor verbs. "In sync" is literal for a digital twin.
+**E — Evidence: PASS.**
+- Frame 1: 40 Figure 03 at BMW Spartanburg → E29. Confirmed.
+- Frame 2: 1,250 hours, above 99% placement, 90,000 sheet metal parts, 30,000 vehicles, attributed to Figure 02 → E28. All four figures present and correctly assigned to the 02 deployment. The draft is careful to attribute the record to the 02 units, which is exactly what E28/E29 support. No drift.
+- Caption: same figures, same correct attribution ("on the back of a Figure 02 record").
+- Frame 3: board/buyer question shifted from "whether humanoids work" → E33 ("if" to "which vendor and when"). Supported.
+- Frames 4–7 (integration layer is the open work, edge compute, pipelines, digital twin) are argumentative/positioning claims, not factual assertions requiring a ledger entry. No invented statistics. Good.
 
-**F — Formatting: PASS.** No em dashes in body copy (the hyphens in "90,000-plus," "11-month" are hyphenated compounds, fine; the em dashes appear only in the Evidence-used ledger notes, not body copy). No emojis, hashtags, exclamations, caps. Bold appears only on structural labels ("Slide 1:", "Caption") — scaffolding, not body copy. Slide word counts: Slide 1 ≈ 32 words. **Slide 1 is over the 25-word cap.** Slide 4 ≈ 34 words — also over. Slide 2 ≈ 30. This is a real F concern.
+**O — One thing: PASS.** The post argues: the humanoid is proven, so the CTO's remaining engineering scope is the edge-and-data integration layer around it. One idea. It matches the slot angle and ladders to the big idea (capability is bought; the operating layer around it is the unbuilt, ownable work) — here expressed in physical AI terms.
 
-Re-reading §9: "≤25 words per slide." Slides 1, 2, and 4 exceed it. Under a strict mechanical read this is a FAIL on F.
+**L1 — Interchangeability: PASS.** Swap Figure 03 for another humanoid and the copy breaks: the BMW Spartanburg numbers, the Figure 02 record, the body-shop specifics are all load-bearing. Frames 5–7 name concrete integration components. Not generic.
 
-Let me reconsider before failing. The cap is a hard number in §4 and §9, and the QC rubric says ">25 fails." Three slides breach it. I have to hold the line — this is mechanical, not judgment.
+**L2 — CTO respect: PASS.** It concedes the settled part instead of hyping the robot, which is what earns a technical executive's trust. The "40 units, 99%, 90,000 parts" specificity reads like someone who read the deployment, not a press release.
 
-**F — Formatting: FAIL** on slide word count.
+**L3 — Cognitive depth: PASS.** The "I hadn't considered that" moment is Frame 4/6: the robot is a finished product, but the integration is a separate build that lands on the buyer, and that build — not the hardware — is where the engineering and the capital risk actually sit. For a CTO watching board humanoid conversations, reframing the robot as the easy part is the non-obvious move.
 
-**E — Evidence: PASS.** Every stated number traces to [E30]: 11 months, 90,000+ parts, above 99% accuracy, ~1,250 hours, 30,000+ X3 vehicles. All present, all matched to the right population (Figure 02 at Spartanburg). No composite claims, no CONFLICT figures stated as single numbers. Slides 4–5 make no numeric claims. Correctly flagged as POV, not ledger stats.
+**R — Rhythm/human: PASS.** Frame lengths vary, real transitions ("So the board question shifted"), sounds like speech read aloud. The reel format's line breaks are structural, not artificial staccato. CTA grows out of Frame 6→8 rather than bolting on.
 
-**O — One thing: PASS.** The post argues: the humanoid already runs at production accuracy, so the hardware is not the hard part. One idea, matches the slot job, ladders to the big idea (the operating gap at the physical frontier).
+## One improvable weakness
 
-**L1 — Interchangeability: PASS.** Swap Figure 02 for another robot and the specifics (1,250 hours, 90,000 parts, 30,000 X3s, BMW Spartanburg) break. Not generic.
-
-**L2 — CTO respect: PASS.** Reads like a peer stating verified production facts. No wince.
-
-**L3 — Cognitive depth: PASS.** The moment: slide 3–4, that the unsolved work is edge compute, fleet pipelines, and twin sync — not the robot. A VP of Engineering expecting "humanoids aren't ready yet" gets redirected to the integration problem. That's the "I hadn't considered that."
-
-**R — Rhythm: PASS.** Varied lengths, sounds like speech, CTA lands naturally.
-
-## Edit notes
-
-One fix, mechanical. Three slides exceed the 25-word cap. Compress by cutting words, not by chopping voice:
-
-- **Slide 1 (≈32 → ≤25):** "A humanoid worked a BMW line for 11 months, placing 90,000-plus parts above 99% accuracy. The robot works. What decides the rollout is the line around it." (≈28 — still trim further: drop "What decides the rollout is" → "The rollout is decided by the line around it." Target under 25.) Suggested: "A humanoid worked a BMW line for 11 months, placing 90,000-plus parts above 99% accuracy. The robot works. The rollout is decided by the line around it." Count and confirm ≤25; if still over, cut "for 11 months" (it's repeated on slide 2).
-- **Slide 2 (≈30 → ≤25):** Cut "and it helped build" to "helping build," and drop "over that run": "Figure 02 logged about 1,250 operational hours at BMW Spartanburg, helping build more than 30,000 X3 vehicles. This is production, not a demo reel."
-- **Slide 4 (≈34 → ≤25):** Tighten the list: "Edge compute at the station, fleet pipelines carrying every placement, a digital twin keeping line and model in sync. That's where the rollout is decided." Confirm ≤25; if over, cut "at the station."
-
-Everything else ships as written.
+Frame 7's "embedded systems, robot data pipelines, and deep expertise in the NVIDIA ecosystem" is a three-item list that leans slightly toward a capability roster. It doesn't fail S (it's a concrete parts list, not a rhythmic rule-of-three closer), but consider tightening to the two items that carry the most weight for a manufacturing CTO, or tying one item to Frame 5's specifics so it reads as continuation rather than a credentials line.
 
 ```json
-{"verdict": "FAIL",
- "checks": {"V": "PASS", "S": "PASS", "M": "PASS", "F": "FAIL", "E": "PASS",
+{"verdict": "PASS",
+ "checks": {"V": "PASS", "S": "PASS", "M": "PASS", "F": "PASS", "E": "PASS",
             "O": "PASS", "L1": "PASS", "L2": "PASS", "L3": "PASS", "R": "PASS"},
  "verify_flags": [],
- "edit_notes": "Only F fails: slides 1 (~32 words), 2 (~30), and 4 (~34) exceed the 25-word-per-slide carousel cap (§9). Compress by cutting words, not voice. Slide 1: 'A humanoid worked a BMW line for 11 months, placing 90,000-plus parts above 99% accuracy. The robot works. The rollout is decided by the line around it.' — count and trim under 25; if over, drop 'for 11 months' since slide 2 repeats it. Slide 2: 'Figure 02 logged about 1,250 operational hours at BMW Spartanburg, helping build more than 30,000 X3 vehicles. This is production, not a demo reel.' Slide 4: 'Edge compute at the station, fleet pipelines carrying every placement, a digital twin keeping line and model in sync. That is where the rollout is decided.' — trim to under 25, cutting 'at the station' if needed. Verify final word counts on all six slides before resubmitting. No other changes; V/S/M/E/O/L/R all pass as written."}
+ "edit_notes": ""}
 ```

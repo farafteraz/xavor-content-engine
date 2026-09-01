@@ -1,47 +1,47 @@
-# Editor's Memo — Post 8 (video feature)
+# Editor's memo — Post 8 (explainer reel)
 
-**Overall verdict: PASS**
-
-This is a disciplined script. The angle is intact, the evidence traces cleanly, and the register is engineer-to-engineer without vendor puffery. I hunted for the usual AI tells and found nothing that fails a hard check. Details below.
+**Overall verdict: FAIL** on one mechanical check (S). The draft is strong, the evidence is clean, and the insight lands, but Frame 2 contains a cross-sentence contrastive negation that the spec bans outright.
 
 ## Per-check results
 
-**V — Vocabulary: PASS.** Scanned word by word. No banned terms. "governed/governance" is used literally, not as filler. No "seamless," "robust," "scalable," "optimize," "leverage." Clean.
+**V — Vocabulary: PASS.** Scanned word by word. "Mission-critical" appears in Frames 3 and 5, but both are direct quotes of the Google/Credo survey language carried in the ledger (E51, E52), so they fall under the "unless quoting" exemption. No other banned terms. Note for the writer: "mission-critical" is on the banned list (§5); keeping it is defensible only because it's the surveyed language. Watch it.
 
-**S — Structures: PASS.** Checked every sentence pair for reframes. The candidates:
-- "The hardware works. What makes it work on a line is everything in this frame..." — this is not a contrastive negation. It affirms two true things (hardware works; the line integration is the harder part) without a "not X but Y" pivot. Allowed.
-- "Not in the cloud. On the floor." — this is the one to scrutinize. It reads as a fragment pair, but it's correcting a specific technical fact (where the inference runs), which §6.1 explicitly permits ("allowed ONLY to correct a specific fact... or scope"). It also lands as natural spoken emphasis, not a slogan reveal. Borderline but passes.
-- "The robot is the easy 20 percent" (caption) — a claim, not a reframe structure. Fine.
-- No triple bursts, no rule-of-three closers, no "This is" unveilings, no cliffhanger pivots ("The result?"), no amputated slogan tags. Clean.
+**S — Structures: FAIL.**
+- Frame 2: "Most companies wrote the governance policy. What they never built is the layer that enforces it..." This is a contrastive negation across sentence boundaries — the exact "Most teams think they have a hiring problem. They have a standards problem." pattern named in §6.1. The setup (they wrote the policy) exists only to be negated by the pivot (what they never built). It is not correcting a specific fact, number, date, or scope, so it does not qualify for the allowed exception.
+- Frame 4: "Policy lives in a document. Enforcement lives in wiring..." Borderline. This reads as a parallel definition rather than a setup-and-negate, and it's carrying real specifics (inventory, decision boundaries, token attribution). I'd let it stand, but it's close enough that a rewrite should make sure it doesn't tip into the same reframe rhythm as Frame 2.
 
-**M — Metaphor: PASS.** No analogy setups, no "think of it as," no banned metaphor families. "flowing back clean" is literal pipeline language, acceptable. "where most physical AI stalls" is literal, not a metaphor verb from the banned list. Clean.
+**M — Metaphor: PASS.** "Wire into," "wiring," "layer," "carry a mission-critical agent," "standing between you and production" are all literal engineering language, not banned metaphor families or verbs. "Renders on demand" is literal (audit trails render). No analogies, no banned setups.
 
-**F — Formatting: PASS.** No emojis, hashtags, exclamations, caps, or em dashes in body copy. The bold is on frame/beat labels and structural markers (Runtime target, Beat headers), which are scaffolding, not body copy — acceptable for a script treatment. VO lines themselves carry no bold or italics. No em dashes (the "—" in headers is a title separator, not prose). Word count fine for a script.
+**F — Formatting: PASS.** No emojis, hashtags, exclamations, bold/italics/caps in body copy, no em dashes. Frame word counts all well under 25. This is a reel, not a carousel, but the compression discipline holds.
 
-**E — Evidence: PASS.** Every stated figure traces:
-- "90,000 parts... Above 99 percent accuracy... roughly 1,250 hours" → [E30] verbatim. Correct.
-- Edge compute / always-on agent framing → [E37], kept general with no invented spec figures, exactly as the evidence note claims.
-- Integration-not-procurement framing → [E33] directional, not quoted. Legitimate.
-- No CONFLICT figures stated as single numbers, no merged composite claims, no denominator drift. The "easy 20 percent" is rhetorical framing, not a cited statistic, and reads as such.
+**E — Evidence: PASS.** Every claim traces cleanly.
+- Frame 1: 60% / 4% → E52. Correct denominator (371 senior leaders, Credo AI). ✓
+- Frame 3: 83% / 17% → E51. Correct denominator (1,400+ senior IT leaders, Google). ✓
+- Frame 5: 61%→92% governance urgency at scaled programs → E52. ✓
+No composite claims, no CONFLICT figures stated as single numbers, no invented specifics. Source lines are attached to the right populations. Clean.
 
-**O — One thing: PASS.** The post argues: the humanoid is solved, and the unsolved, engineering-owned work is the edge compute, fleet pipelines, and twin-to-PLM connectivity that make it operable on a governed line. One idea, no "and" that splits into two theses. Ladders to the big idea (the operating gap, physical-AI variant) and matches the slot's job and angle exactly.
+**O — One thing: PASS.** The post argues one thing: governance at scale fails because the enforcement layer under the policy was never built (an infrastructure problem, not a policy problem). Matches the slot's N2 job exactly and ladders to the operator's-gap thesis (capability deployed, unowned, unaccounted).
 
-**L1 — Interchangeability: PASS.** You cannot swap the subject out. Edge-compute placement inside line timing, fleet telemetry pipelines, twin-to-PLM propagation — these are specific to physical AI on a manufacturing line and would break if you substituted another technology. Beat 5's "connect it to the PLM and the line data" is the least swappable, most specific moment.
+**L1 — Interchangeability: PASS.** The specifics (per-agent inventory, decision boundaries, token attribution, audit trail, the 4%/17%/92% figures) are not swappable for another technology. This is about agentic AI governance specifically.
 
-**L2 — CTO respect: PASS.** The "no music sting, no slow-mo hero shot" and "engineers watching, adjusting, not celebrating" direction signals credibility a technical exec respects. It refuses the vendor sizzle reel. The "decision every few milliseconds... on the floor, not in the cloud" line is the kind of precision a VP of Engineering trusts.
+**L2 — CTO respect: PASS.** The frames name the real mechanics and don't oversell. A CTO would not wince. Frame 4's enumeration (inventory, decision boundaries, token attribution, audit trail) is the kind of concrete scope that earns respect.
 
-**L3 — Cognitive depth: PASS.** The "I hadn't considered that" moment is Beat 5: "That connection is where most physical AI stalls." It relocates the failure point away from the robot (where the buyer's attention is) to the twin-PLM-line-data connection (where the money actually gets stuck). The "easy 20 percent" inversion reinforces it. This is the differentiated claim, not common knowledge.
+**L3 — Cognitive depth: PASS.** The "I hadn't considered that" moment is Frame 5: governance urgency doesn't rise gradually, it jumps 61%→92% at the exact moment of scale, which reframes governance as a threshold event tied to an unbuilt layer rather than a policy you can write ahead of time. That converts a policy mindset into an infrastructure one, which is the slot's whole job.
 
-**R — Rhythm/human: PASS.** Varied sentence lengths, real spoken cadence in the VO. Beats 3 and 4 carry longer thoughts; Beat 2 is tighter. The CTA grows from Beat 6's closing line rather than being bolted on. Reads like a script a human director would shoot, not an AI imitating the spec.
+**R — Rhythm/human: PASS, with a note.** Sentence lengths vary within frames, transitions are real, the CTA grows out of Frame 6 rather than being bolted on. It doesn't read metronomic. The one risk: reel frames naturally tend toward stat-then-claim uniformity, and Frames 1/3/5 all follow that shape. It works here because the claims differ in kind, but the rewrite of Frame 2 should not add a fourth stat-claim beat.
 
-## One improvable weakness (non-blocking)
+## Edit notes
 
-Beat 6's "That's the work between a robot that places parts and a line you can run" faintly echoes the big-idea phrasing ("between 'we bought it' and 'it runs'"). It's fine, but the writer could sharpen it with one physical-line specific (a named line metric or takt figure) if the shoot allows, to push it further from framing into proof.
+One fix required.
+
+**Frame 2** — Remove the contrastive negation. Currently: "Most companies wrote the governance policy. What they never built is the layer that enforces it across every deployed agent." Rewrite as a direct positive claim that states the gap without the "they did X, but never Y" setup. Something like: "The governance policy exists in most companies. Enforcing it across every deployed agent takes a layer the stack was never built to hold." Or lead with the enforcement layer directly: "Enforcing a governance policy across every deployed agent takes a layer most stacks were never built to hold. That layer is what's missing." Keep it to the reel's compressed register, keep it under 25 words, and do not convert it into a stat frame. The point of Frame 2 is the conceptual bridge from Frame 1's numbers to Frame 4's mechanics; state that bridge as a fact, not a reframe.
+
+While you're in there: confirm you're comfortable keeping "mission-critical" as surveyed language in Frames 3 and 5. It's exempt as a quote, but if you can attribute it visually (source line) without leaning on the phrase in the VO, cleaner is better.
 
 ```json
-{"verdict": "PASS",
- "checks": {"V": "PASS", "S": "PASS", "M": "PASS", "F": "PASS", "E": "PASS",
+{"verdict": "FAIL",
+ "checks": {"V": "PASS", "S": "FAIL", "M": "PASS", "F": "PASS", "E": "PASS",
             "O": "PASS", "L1": "PASS", "L2": "PASS", "L3": "PASS", "R": "PASS"},
  "verify_flags": [],
- "edit_notes": ""}
+ "edit_notes": "Frame 2 contains a banned cross-sentence contrastive negation (§6.1): 'Most companies wrote the governance policy. What they never built is the layer that enforces it...' The setup exists only to be negated and does not correct a specific fact/number/date/scope, so it fails. Rewrite as a direct positive claim stating the enforcement-layer gap. Example: 'Enforcing a governance policy across every deployed agent takes a layer most stacks were never built to hold. That layer is what's missing.' Keep under 25 words, keep the reel's compressed voice, do not turn it into a fourth stat frame (Frames 1/3/5 are already stat-then-claim). Frame 2's job is the conceptual bridge from Frame 1's numbers to Frame 4's mechanics: state it as fact, not reframe. Secondary: 'mission-critical' in Frames 3 and 5 is banned vocabulary but exempt as surveyed quote language (E51/E52); keep only if attributed to the source, and prefer not to lean on the phrase in VO."}
 ```

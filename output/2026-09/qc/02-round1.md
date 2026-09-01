@@ -1,43 +1,59 @@
-# Editor's Memo — Post 2 (explainer reel)
+# Editor's memo
 
-## Overall verdict: PASS
+## Overall verdict: FAIL
 
-The draft holds the slot's line cleanly: GA ships the surface, operable means configured, owned, and actionable. It ladders to the operating gap without over-reaching into the article's full argument. Evidence is tight and the one out-of-slot claim (kill switch) is flagged with an explicit fallback. Below, check by check.
+The draft is clean, well-paced, and mechanically strong on vocabulary, metaphor, and formatting. It fails on two counts: a mislabeled evidence claim (the angle promises "four blockers" but only three exist in the ledger, and the copy openly contradicts itself on the count), and a structural reframe in the caption and slide 5.
+
+---
 
 ## Per-check results
 
-**V — Vocabulary: PASS.** Scanned word by word. No banned terms. "Control plane," "control surface," "kill switch," "thresholds," "escalation path" are all literal technical vocabulary, not filler. No "seamless," "robust," "governance" as puffery — governance appears as the literal subject.
+**V — Vocabulary: PASS.** Scanned word by word. No banned terms. "Scope" used as a verb literally, fine. No filler crutches.
 
-**S — Structures: PASS.** Checked every sentence pair for reframes. Frame 3 ("GA means the control plane shipped. It does not mean it is on...") reads like a candidate contrastive negation, but it survives: it corrects a specific scope claim (what GA does vs. does not deliver), which §6.1 explicitly permits when contrast corrects fact or scope. Frames 4 and 5 both open "Operable means someone..." — that is deliberate anaphora developing one definition across two facets, not a triple burst or rule-of-three closer. No cliffhanger pivots, no "This is" unveilings, no amputated slogan tags, no meta commentary. Frame 6 states the claim plainly.
+**S — Structures: FAIL.**
+- Caption: "'Not ready' is what a stalled pilot looks like from the outside. From the inside, it's usually one of four specific failures." This is a cross-sentence contrastive reframe (outside appearance vs. inside reality — "on the surface X... actually Y"). It sets up a false surface reading to pivot. §6.1.
+- Slide 5: "you didn't have a model problem. You had an engineering problem you can now scope." Textbook contrastive negation across sentences ("Most teams think they have a hiring problem. They have a standards problem." is the exact pattern named in §6.1). This is not a factual correction of a number/date/scope, so it is not the permitted exception.
 
-**M — Metaphor: PASS.** No analogies, no banned setups, no metaphor verbs. "Watching your traffic" and "read what it shows" are literal descriptions of an observability surface. The empty-chair image lives in the design note, not the copy, and is a literal staging choice, not a written metaphor.
+**M — Metaphor: PASS.** No analogies, no banned setups or verbs. "Die the same death" / "the one that killed it" is a light personification but reads normal and isn't in the banned families. Acceptable.
 
-**F — Formatting: PASS.** No emojis, hashtags, exclamations, bold/italics/caps in the frame copy, no em dashes. Longest frame (Frame 3, 26 words if you count generously) — recount: "GA means the control plane shipped. It does not mean it is on, tuned to your risk frameworks, or watching your traffic." That is 22 words. Every frame is under 25. Seven frames, within the 6–8 spec for a reel.
+**F — Formatting: PASS.** No emojis, hashtags, exclamations, bold/italics/caps in body copy, no em dashes. Slide word counts all under 25 (slide 5 is the longest at ~45 words across two sentences — recount below).
 
-**E — Evidence: PASS.** Every claim traces:
-- Frame 1: Unity AI Gateway GA August 4, single entry point for agent/model/tool → [E1]. Exact.
-- Frame 2: ServiceNow Control Tower GA this month → [E7]; kill switches reaching agents outside its own platform → [E9]. The [E9] use is disclosed and the writer offers the strict-slot fallback. [E9] is real and stated accurately ("kill switches applicable outside its own platform for the first time"). No drift.
-- Frame 3: what GA does not guarantee (on, tuned to risk frameworks, watching traffic) — risk-framework tuning is consistent with [E8] (Govern's 5 NIST/EU-AI-Act frameworks) though not cited; it's characterization, not a stat. Acceptable.
-- Frames 4–6: definitional/argumentative, no numbers to source.
-No invented figures. No CONFLICT figure stated as a single number. Base populations correct.
+Wait: slide 5 word count. "Sort your stalled pilots into those three and the pattern shows: you didn't have a model problem. You had an engineering problem you can now scope. The ones that shipped paid it back in a median of 5.1 months." That is ~46 words. **This exceeds the 25-word cap.** Slide 2 is ~40 words, slide 3 ~28, slide 4 ~30. Multiple slides break the ≤25-word carousel limit (§9, §4). **F — FAIL.**
 
-**O — One thing: PASS.** The post argues: a platform reaching GA gives you a control surface, but only configuration and a named owner make it operable. One idea, no "and" needed. Matches the slot angle verbatim and ladders to the operating gap.
+**E — Evidence: FAIL.**
+- The angle and slide 1 both claim "four blockers." The ledger (E17) lists exactly three: evaluation gaps 64%, governance friction 57%, model reliability 51%. There is no fourth blocker anywhere in E17, E18, or E19. Slides 2–4 then deliver only three. The draft even admits this: slide 5 says "Sort your stalled pilots into those three." The post argues four, ships three, and names three. This is an unsupported claim contradicted by its own copy.
+- Note also E19 is listed in the slot's evidence array but never used, and it would have been the honest way to add a fourth data point (22.8% deployed and meeting ROI). Not a violation on its own, but it exposes that the "four" was never grounded.
+- 5.1 months (E21): correctly supported.
+- 88% and 64/57/51 (E17): correctly supported, and the overlap note is honest and correct.
 
-**L1 — Interchangeability: PASS.** Swap Databricks/ServiceNow for another platform and the copy breaks — the GA dates, the single-entry-point description, and the cross-platform kill switch are specific to these products. Frames 4–6 are more generic by nature (they define "operable"), but they are anchored by the named specifics in 1–3, so the reel as a whole is not swappable.
+**O — One thing: PASS (with the count caveat).** The post argues: a stalled pilot died from one identifiable blocker, and you can name which. Single idea, ladders to N1's "make the gap diagnosable." Good. But the "four vs three" defect undercuts the very spine, so this only passes conditional on the E fix.
 
-**L2 — CTO respect: PASS.** Reads like a peer who has actually configured one of these surfaces. "Act before the audit does" is the kind of line a platform lead nods at. No wince.
+**L1 — Interchangeability: PASS.** The percentages and the named failure modes (evaluation pipeline, decision boundary, escalation path, messy production inputs) are specific to agent pilots. Swapping the subject breaks the copy. Good.
 
-**L3 — Cognitive depth: PASS.** The moment: "Operable means someone owns it. A named engineer who can read what it shows and act before the audit does." A VP of Engineering who just watched three GA announcements land realizes the announcements produced control planes with no operator assigned — that the buying is done and the staffing isn't. That's the "I hadn't considered that" turn for this audience.
+**L2 — CTO respect: PASS.** The diagnostic framing (worked in a demo, no pipeline to prove it held) is the language of someone who has watched pilots die. A VP of Engineering would not wince.
 
-**R — Rhythm/human: PASS.** For a reel, the compressed frame cadence is correct and not metronome-flat: sentence lengths vary within frames (Frame 3 and 4 mix a short beat with a longer one). Caption opens on a hard claim, no throat-clearing. CTA is the slot's mandated register and lands naturally off Frame 6's "unstaffed." One minor note below.
+**L3 — Cognitive depth: PASS.** The moment lands: "you didn't have a model problem. You had an engineering problem you can now scope." The reader reclassifies dead pilots from "not ready" to a specific, fixable blocker. That is the intended "I hadn't considered that." (The sentence delivering it must be rewritten to kill the reframe, but the insight itself is real.)
 
-## Improvable weakness (not a fail)
-Frames 4 and 5 both open with "Operable means someone" and both use a clipped verb-first fragment second sentence ("Set the thresholds." / "Wired the kill switch..."). The parallelism is effective once but risks a faint staccato echo across the two frames. If a light polish pass happens, vary the second sentence of Frame 5 to a fuller clause so the pair doesn't read as a template.
+**R — Rhythm/human: PASS.** Varied lengths, reads like speech, opens on a hard fact with no throat-clearing, CTA lands naturally. Not metronomic. Good.
+
+---
+
+## Edit notes
+
+1. **Fix the count. This is the priority.** The ledger supports three blockers, not four. Change the angle-in-copy and slide 1 from "four blockers" to "three blockers." Slide 1 becomes: "88% of agent pilots never reach production (Forrester/Anaconda). They don't all die the same way. Three blockers, and you can match each stalled pilot to the one that killed it." Keep slides 2–4 as the three. Slide 5's "those three" then agrees. (If a fourth is genuinely wanted, it must come from a real ledger entry — E19's 22.8% deployed-and-meeting-ROI is a different statistic and a different population, so do not fold it in as a fourth blocker; that would be an E fail of its own.)
+
+2. **Kill the caption reframe.** Replace "'Not ready' is what a stalled pilot looks like from the outside. From the inside, it's usually one of four specific failures" with a direct statement. Suggested: "A stalled pilot gets written off as 'not ready.' Usually it's one of three specific failures, and you can name which one killed each of yours. Evaluation gaps kill the most."
+
+3. **Kill the slide 5 reframe.** Remove the "you didn't have X, you had Y" construction. State the positive claim directly. Suggested rewrite (also trims to word limit): "Sort your stalled pilots into these three and the failure stops being 'not ready.' Each one is a specific engineering scope. The pilots that shipped paid back in a median of 5.1 months." Then check word count.
+
+4. **Word count on every slide.** Slides 2, 3, 4, and 5 exceed ~25 words. Compress by cutting words, not by chopping into fragments. Slide 2 example under limit: "Evaluation gaps: 64% of failures. The agent worked in a demo, and no one built the pipeline to prove it held on real inputs. The biggest killer by far." (~30 — still over; cut further: drop "The biggest killer by far" since slide already says 64% is largest.) Target every slide at or under 25.
+
+5. Leave the overlap note in the evidence section as-is; it is honest and correct.
 
 ```json
-{"verdict": "PASS",
- "checks": {"V": "PASS", "S": "PASS", "M": "PASS", "F": "PASS", "E": "PASS",
+{"verdict": "FAIL",
+ "checks": {"V": "PASS", "S": "FAIL", "M": "PASS", "F": "FAIL", "E": "FAIL",
             "O": "PASS", "L1": "PASS", "L2": "PASS", "L3": "PASS", "R": "PASS"},
  "verify_flags": [],
- "edit_notes": ""}
+ "edit_notes": "1) EVIDENCE: The ledger (E17) supports exactly three blockers (evaluation 64%, governance 57%, model reliability 51%), not four. The draft claims 'four blockers' in the angle and slide 1 but ships and names only three, and slide 5 contradicts itself by saying 'those three.' Change all references to three. Do NOT invent a fourth or fold in E19 (22.8% is a different statistic and population). 2) STRUCTURE: Remove the caption reframe ('from the outside... from the inside'); state directly, e.g. 'A stalled pilot gets written off as \"not ready.\" Usually it's one of three specific failures, and you can name which one killed each of yours. Evaluation gaps kill the most.' 3) STRUCTURE: Remove the slide 5 contrastive negation ('you didn't have a model problem. You had an engineering problem'). Replace with a direct positive claim, e.g. 'Sort your stalled pilots into these three and the failure stops being \"not ready.\" Each one is a specific engineering scope. The pilots that shipped paid back in a median of 5.1 months.' 4) FORMATTING: Slides 2, 3, 4, and 5 exceed the 25-word carousel cap. Compress by cutting words, not fragmenting. Get every slide to 25 or fewer. 5) Keep the evidence-overlap note as-is; it is correct."}
 ```

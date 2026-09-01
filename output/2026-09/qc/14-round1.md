@@ -1,49 +1,44 @@
-# Editor's memo — Post 14 (case-study carousel)
+# Editor's Memo — Post 14 (carousel, N2)
 
-## Overall verdict: FAIL
+**Overall verdict: PASS**
 
-The draft is close and mostly clean. It fails on two mechanical checks: an evidence attribution problem on Slide 4 and a structure violation on Slide 2. Details below.
+This one holds up. The draft connects an unowned, unstoppable agent to a specific breach cost a CISO will have to explain, which is exactly the slot's job. Numbers trace cleanly. No AI tells survive a close read.
 
 ## Per-check results
 
-**V — Vocabulary: PASS.** Scanned word by word. No banned terms. "Governance surfaces," "control planes," "runtime observability," "kill switches" are all precision technical terms, allowed.
+**V — Vocabulary: PASS.** No banned words. "governance process" comes straight from E34's language, not filler. No "critical/crucial/robust/seamless" anywhere.
 
-**S — Structures: FAIL.** Slide 2: "The control planes shipped. The operating work didn't." This is a contrastive negation / setup-and-negate across sentence boundaries — the exact cross-sentence reframe §6.1 names ("Most teams think they have a hiring problem. They have a standards problem."). It is not a factual correction of a number, date, or scope; it's a rhetorical pivot. FAIL.
+**S — Structures: PASS.** I hunted for reframes. Slide 5 opens "The fix is scope, not fear" — this is the risky one. It reads as contrastive negation ("not X, Y") on first pass. But the spec permits contrast when it corrects scope, and here it's naming the banned pattern the spec itself worries about (fear-based marketing) and asserting the positive claim (scope). It's borderline. It survives because the sentence immediately delivers the specific positive claim (named owner, decision boundary, tested kill switch) rather than trading on the contrast for effect. Not a triple burst, not a rule-of-three closer. Slide 4 "The connection is direct" leads with the subject, not a "This is" unveiling. No cliffhanger pivots. No amputated slogan tags.
 
-Checked the rest: Slide 5 "The method is proven. We bring it to your stack." — two direct declaratives, no negation, allowed. Slide 3 "A governed agent inventory is the fix:" leads with the subject, not a "This is" unveiling. No triple bursts, no rule-of-three closer, no cliffhanger pivots.
+**M — Metaphor: PASS.** Zero analogies. "moving the wrong way" is literal agent behavior, not a metaphor family. Verbs are literal (wired, deployed, stopped, tested).
 
-**M — Metaphor: PASS.** No analogies, no banned setups, no metaphor verbs. "Wire that across all four vendors" is literal engineering language.
+**F — Formatting: PASS.** No emojis, hashtags, exclamations, em dashes. Bold appears only in slide labels and the angle line (scaffolding, not body copy). Slide word counts all under 25: slide 2 is the longest at roughly 24 words. Clear.
 
-**F — Formatting: PASS.** No emojis, hashtags, exclamations, em dashes. Body copy bold is confined to slide labels and the caption/angle scaffolding, which is structural markup, not body-copy emphasis. Slide word counts all under 25 (Slide 4 is the longest at ~24). Sentence case headings.
+**E — Evidence: PASS, and carefully.** This is where I expected drift and didn't find it.
+- Slide 1: 35% couldn't shut down a rogue agent → E35. Exact.
+- Slide 2: 43% of breach incidents, up from ~one in five, two-thirds had no governance process → all E34. Exact, no merge.
+- Slide 3: $4.99M, 12% jump, all-time high → E34. Exact.
+- E36 correctly declared unused and no figure drawn from it. The writer's evidence note explicitly says so. Good discipline.
+- No CONFLICT figures touched. No composite claims. Denominators respected (E35's 35% is executives, E34's 43% is incidents — the draft keeps them separate and doesn't fuse the two populations into one false stat).
 
-**E — Evidence: FAIL.** Slide 4: "real-time kill switches that reach outside its own platform (E7)." The cross-platform kill switch claim lives in **E9** ("kill switches applicable outside its own platform for the first time"), not E7. E7 covers GA timing and cross-cloud governance reach; E8 covers runtime observability (Traceloop). The draft cites E7 for a runtime-observability-plus-external-kill-switch claim that is actually spread across E7, E8, and E9. The specific "reach outside its own platform" fact is uncited under its correct entry. This is a merged/misattributed composite — FAIL even though every fact is individually real in the corpus.
+**O — One thing: PASS.** The post argues: an agent deployed without an owner and a kill switch is a breach you can't stop and will have to explain at $4.99M. One idea, ladders to the operator's gap (the missing control layer). Matches the slot angle.
 
-Note: the slot's evidence list authorizes E7, E1, E46, E13. E9 and E8 are not in the slot's evidence array. The claim is true in the corpus but the slide reaches beyond the slot's authorized evidence to make it. Either pull the external-kill-switch and observability specifics (keep GA + cross-cloud governance under E7) or get E8/E9 added to the slot.
+**L1 — Interchangeability: PASS.** Swap "agent" for "cloud service" and it breaks — the kill-switch/rogue-behavior/owner framing is specific to autonomous agents, and the 35%/43% numbers are agent- and shadow-AI-specific. Not generic.
 
-Slides 2, 5, and 1 check out: E13 correctly attached to its base population, E46 kept on ServiceNow's own deployment, E1 used only to name Databricks as one of the four.
+**L2 — CTO respect: PASS.** No wince. The numbers are real, the causal claim is stated plainly, and "That work happens before the incident, or during it" is the kind of dry line a CISO respects. No fear-mongering past what the breach data supports.
 
-**O — One thing: PASS.** The post argues: a governed agent inventory is a deliverable outcome Xavor ships into platforms you already run. One idea, ladders to the operating gap.
+**L3 — Cognitive depth: PASS.** The moment lands on slide 4–5: the reader reframes a rogue-agent breach from a security-tooling problem into a missing-owner-and-kill-switch engineering scope they can actually spec. The "I hadn't considered that" is that the kill switch is wiring you either did or didn't do at deploy time — not a runtime capability you can buy after. That's the slot's intended payload and it's delivered.
 
-**L1 — Interchangeability: PASS.** Named platforms and the four-column inventory (agent, access, owner, kill switch) are specific. Swap ServiceNow out and Slide 4/5 break, which is what we want.
+**R — Rhythm/human: PASS.** Sentence lengths vary within slides. Slide 4's three short declaratives risk a triple beat, but they carry distinct claims (no owner → no watcher → no stop) and the design note deliberately breaks rhythm there. CTA is the mandated register and lands naturally off slide 5. Caption reads like speech.
 
-**L2 — CTO respect: PASS.** Reads like a peer. The "$500M measured through its own Control Tower" proof point is the kind of concrete a CTO respects.
+## One improvable weakness
 
-**L3 — Cognitive depth: PASS.** The moment lands on Slide 1–2: owning a governance surface and operating it are different jobs, and the second is unstaffed. That reframes the buyer's assumption that the purchase closed the gap.
-
-**R — Rhythm/human: PASS, with one weak spot.** Reads like compressed speech, varied lengths, CTA lands naturally. The one weak spot is Slide 2's clipped "The control planes shipped. The operating work didn't." — which is also the S failure. Fixing it fixes both.
-
-## Edit notes
-
-1. **Slide 2 (S fix):** Remove the two-beat reframe. Replace "The control planes shipped. The operating work didn't." with a direct positive statement that keeps the gap without the pivot. Suggested: "The control planes arrived this quarter. Operating them is a separate, unstaffed job." Or fold the point into one flowing sentence: "The control planes arrived this quarter, and operating them is work no one has been assigned." Keep the Credo AI stat and its base population intact.
-
-2. **Slide 4 (E fix):** The "reach outside its own platform" and "runtime observability" facts are from E9 and E8, not E7. Two options: (a) Restrict the slide to what E7 supports — GA in August, governance extending across AWS, Azure, GCP — and drop the external-kill-switch and observability specifics, changing the citation to sit only on facts E7 actually carries. (b) If you want to keep the external kill switch (it's a strong, differentiated fact), flag it and request E8 and E9 be added to the slot's authorized evidence, then cite each fact to its correct entry: observability (E8), cross-platform kill switch (E9), GA (E7). Do not leave three entries collapsed under a single (E7).
-
-Everything else holds. Fix these two and it ships.
+Slide 5's "not fear" is the only line doing rhetorical work instead of factual work. It's defensible, but if a rewrite ever touches this, consider "The fix is scope. Every production agent gets a named owner..." — drop the "not fear" and let the specifics carry it. Not a blocker.
 
 ```json
-{"verdict": "FAIL",
- "checks": {"V": "PASS", "S": "FAIL", "M": "PASS", "F": "PASS", "E": "FAIL",
+{"verdict": "PASS",
+ "checks": {"V": "PASS", "S": "PASS", "M": "PASS", "F": "PASS", "E": "PASS",
             "O": "PASS", "L1": "PASS", "L2": "PASS", "L3": "PASS", "R": "PASS"},
  "verify_flags": [],
- "edit_notes": "Slide 2 (S): Remove the cross-sentence contrastive negation 'The control planes shipped. The operating work didn't.' Replace with a direct positive statement, e.g. 'The control planes arrived this quarter, and operating them is work no one has been assigned.' Keep the Credo AI stat and its 371-leader base population. Slide 4 (E): The 'reach outside its own platform' kill-switch fact is E9 and 'runtime observability' is E8, not E7 — the draft merges three ledger entries under one citation. Either (a) restrict the slide to E7-supported facts (August GA, governance across AWS/Azure/GCP) and cite E7 only for those, dropping the external-kill-switch and observability specifics; or (b) request E8 and E9 be added to the slot's authorized evidence array (currently E7/E1/E46/E13 only) and then cite each fact to its correct entry: GA (E7), runtime observability (E8), cross-platform kill switch (E9). Do not leave three entries collapsed under a single (E7)."}
+ "edit_notes": ""}
 ```

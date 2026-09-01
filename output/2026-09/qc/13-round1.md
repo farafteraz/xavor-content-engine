@@ -1,74 +1,52 @@
-# Editor's Memo — Post 13 (carousel)
+# Editor's memo — Post 13 (video feature, N4)
 
-**Overall verdict: FAIL** (one hard structure violation on Slide 1).
-
-The four-requirement spine is clean, well-mapped to [E44], and the evidence sits accurately on the right claims. But Slide 1 carries a contrastive-negation reframe that the spec bans outright, and it repeats in the caption and CTA. That's a mechanical FAIL on S. Everything else holds.
+**Overall verdict: FAIL.** One hard structural violation (S) sinks it. Evidence is clean, formatting is clean, and the piece otherwise carries genuine depth and a strong CTO-grade argument. The S fix is small and surgical, so this is a close miss, not a rebuild.
 
 ## Per-check
 
-**V — Vocabulary: PASS.**
-Scanned word by word. No banned terms. "cost with a story" is fine (not "narrative/journey"). "shutdown" is literal, not the banned "shut down a rogue agent" pattern. Clean.
+**V — Vocabulary: PASS.** Scanned word by word. No banned terms. "Signal" in Beat 4 is literal (data off the floor), not the figurative-buzzword sense. No filler copulas ("carries," "generates," "connect," "build" are all live verbs).
 
 **S — Structures: FAIL.**
-- Slide 1: "That is exposure, not production." — contrastive negation (§6.1). The whole slide is also built as a setup-and-negate: "The ones that survive fail a second test... That is exposure, not production." Same pattern echoes the angle line but the angle is internal; the slide copy is the violation.
-- Caption: "shipped without an owner or a payback number attached" then the pivot — borderline, but the sharper hit is the repeated "exposure, not production" logic driving the piece.
-- Slide 5: "the agent is a cost with a story, not an investment." — second contrastive negation (§6.1). "X, not Y."
-- CTA Slide 6 is clean.
+- Beat 2: "The question a board should be asking isn't which humanoid. It's what carries the data off the floor, and where the decisions actually run." This is a **contrastive negation / reframe across sentences** (§6.1: "not X, it's Y" in disguise — "isn't which humanoid… It's what carries the data"). It is not correcting a specific fact, number, date, or scope, so it is not the permitted exception. FAIL.
+- Beat 5: "The digital twin only earns its keep when it's wired to the real line." Borderline **puffery / bloated copula** ("earns its keep" is a figure for value delivery). Not fatal on its own, but flag it — see notes.
 
-Two clear "X, not Y" reframes. Either one is a FAIL on its own.
+**M — Metaphor: PASS.** No analogy setups, no banned metaphor families or verbs. "Answers in milliseconds," "pull every unit into one signal," "wired to the real line" are all literal descriptions of the actual engineering. No journey/engine/fabric constructs.
 
-**M — Metaphor: PASS.**
-No analogies, no banned setups or metaphor verbs. "exposure wearing a production label" appears only in the internal angle line, not in ship copy. "cost with a story" is idiom, not metaphor family. Clean.
-
-**F — Formatting: PASS.**
-Bold appears only in the scaffolding labels (Slide 1:, Caption), not in body copy that ships — treat as production markup. No emojis, hashtags, exclamations, caps, em dashes. Slide word counts all under 25 (Slide 4 is the longest at ~38 words — recount below).
-
-Correction: Slide 4 runs long. "An escalation path. When the agent hits its boundary or goes wrong, who catches it and how fast. And a shutdown you have actually tested, because 35% of executives admit they couldn't stop a rogue agent today." That is ~44 words. **This fails the ≤25 cap.** Slide 5 is ~40 words. Slide 3 is ~35. Several slides breach.
-
-Revising F to **FAIL** — multiple slides exceed 25 words.
+**F — Formatting: PASS.** No emojis, hashtags, exclamations, em dashes in body copy. The bold is on structural labels (Beat headers, VO markers, "Angle:") — production scaffolding, not body-copy emphasis, which is acceptable in a script treatment. Runtime 75s is within the 60–90s spec. VO lines are compressed prose, not staccato.
 
 **E — Evidence: PASS.**
-- 88% pilots fail to production → [E16]. Correct.
-- 5.1-month median payback → [E16]. Correct, same entry.
-- 35% couldn't shut down a rogue agent → [E20]. Correct.
-- Four-part standard (owner, boundary, escalation, metric) → [E44]. Correct and faithfully applied.
-No invented figures, no merged composites, no denominator drift. Solid.
+- "11 months at BMW Spartanburg, 30,000 vehicles, above 99% placement accuracy" — E28 supports all three (11-month, 30,000+ X3, above 99% placement accuracy). Clean.
+- "Forty generate a fleet" — E29 (40 Figure 03 units at Spartanburg). Clean. Minor note: E28 is the 11-month Figure 02 run; E29 is 40 Figure 03 units. The draft blends the "11 months / 99%" (E28) and "forty units" (E29) across beats without claiming the 40 ran 11 months, so no composite-claim violation. Acceptable.
+- "The hardware capital is committed" (Beat 6) — flagged in the draft's own evidence notes as directional support from E31, no figure quoted. Fine as framing.
+- Edge/fleet framing from E58, no figure quoted. Fine.
+No invented numbers, no CONFLICT figure stated as single. Evidence handling is disciplined.
 
-**O — One thing: PASS.**
-Argues: an agent isn't production-ready until it has an owner, a boundary, an escalation path, and a payback in view. One idea, four facets of the same standard. Ladders to the operating gap. Matches the slot.
+**O — One thing: PASS.** The post argues: the integration layer around the humanoid (edge compute, fleet pipelines, digital twin connectivity) is the real buy, not the robot. One idea, no "and"-thesis. Matches the slot angle exactly and ladders to the operator's gap (capability deployed, the operating layer unbuilt).
 
-**L1 — Interchangeability: PASS.**
-Swap "agent" for "model" and Slides 2–5 lose their teeth — decision boundary and rogue-agent shutdown are agent-specific. Holds.
+**L1 — Interchangeability: PASS.** Swap "humanoid" for "AI agent" and the copy breaks — the edge-node-beside-the-arm, placement accuracy, and digital-twin-to-physical-cell specifics are humanoid-manufacturing-native. Not generic.
 
-**L2 — CTO respect: PASS.**
-"a cost with a story" and the tested-shutdown point land as peer talk. A CTO would respect the payback-date demand.
+**L2 — CTO respect: PASS.** The board-conversation framing, the milliseconds-at-the-edge vs. round-trip point, and "40 units generate a fleet" all read like an engineer who has done this, not a marketer. No wince.
 
-**L3 — Cognitive depth: PASS.**
-The moment: "shipped with no owner... That is exposure, not production" — reframing surviving pilots as the real risk. The insight survives even after we fix the phrasing: a passed pilot with no owner is the exposure, not the failed one. That's the "hadn't considered that" beat.
+**L3 — Cognitive depth: PASS.** The "I hadn't considered that" lands in Beat 2–3: the buy the board is circling is the data-and-decision layer, not the vendor pick. The CTO reframes the humanoid procurement question from "which robot" to "what carries the data and where inference runs." That's the slot's job, delivered.
 
-**R — Rhythm: PASS.**
-Varied, speech-like, CTA grows naturally. No metronome. Good.
+**R — Rhythm/human: PASS.** Varied line lengths, real speech cadence, opens cold on "The robot works. That part is settled." CTA grows out of Beat 6's capital-vs-engineering point rather than bolting on. Not metronomic.
 
 ## Edit notes
 
-Two mechanical fixes, both required.
+One required fix, one recommended.
 
-1. **Kill the contrastive negations (S).**
-   - Slide 1: replace "That is exposure, not production." Rewrite the slide to state the positive claim directly. Example: "88% of agent pilots die before production. The survivors get shipped with no owner, no boundary, no number. A production label on that is exposure." (States the claim without the "X, not Y" pivot; keeps the depth.)
-   - Slide 5: replace "the agent is a cost with a story, not an investment." with a direct statement: "If you can't name the metric and the date it clears, you're funding a cost you can't defend in budget season." Removes the reframe, keeps the CTO edge.
+1. **Beat 2 (required, S).** Kill the cross-sentence "isn't X… It's Y" reframe. State the positive claim directly. Replacement that keeps the meaning and the board framing:
+   "The board conversation is circling the wrong buy. What matters is what carries the data off the floor, and where the decisions actually run."
+   Or tighter: "Boards are pricing the robot. The buy is what carries the data off the floor and where the decisions run." Either states the real subject without setting up a rejected half. Do not reintroduce "not the robot / it's the layer" phrasing anywhere in the VO — the caption and Beat 6 already carry that idea positively.
 
-2. **Cut every slide to ≤25 words (F).** At least Slides 3, 4, and 5 breach. Compress by removing words, not by chopping into fragments.
-   - Slide 4 (~44 → ≤25): "An escalation path. When the agent hits its boundary or fails, who catches it and how fast. Plus a shutdown you have tested. 35% of executives admit they couldn't stop a rogue agent today." Still long — cut further: "An escalation path. When the agent hits its boundary, who catches it and how fast. And a shutdown you have actually tested. 35% of executives can't stop a rogue agent today." (~30, keep trimming to 25: drop "actually," tighten the last clause.)
-   - Slide 5 (~40 → ≤25): "A payback number. Median agent payback runs 5.1 months. Name the metric and the date it clears, or you can't defend the spend." (~24)
-   - Slide 3 (~35 → ≤25): "A decision boundary. The exact actions the agent may take alone, and where it must stop and hand off. Written down before launch." (~24)
-   - Recount every slide after editing.
+2. **Beat 5 (recommended, not blocking).** "earns its keep" is soft puffery. Prefer a literal value statement: "The digital twin is only worth building when it's wired to the real line. We connect the model to the machine, so what you test in simulation holds on the floor." Optional, but it sharpens the line.
 
-No evidence or argument changes needed. Fix the two reframes and the word counts, and this ships.
+Nothing else needs to move. Re-run S after the Beat 2 rewrite and this ships.
 
 ```json
 {"verdict": "FAIL",
- "checks": {"V": "PASS", "S": "FAIL", "M": "PASS", "F": "FAIL", "E": "PASS",
+ "checks": {"V": "PASS", "S": "FAIL", "M": "PASS", "F": "PASS", "E": "PASS",
             "O": "PASS", "L1": "PASS", "L2": "PASS", "L3": "PASS", "R": "PASS"},
  "verify_flags": [],
- "edit_notes": "S: Remove two contrastive-negation reframes (§6.1). Slide 1 'That is exposure, not production.' → state positively, e.g. 'The survivors get shipped with no owner, no boundary, no number. A production label on that is exposure.' Slide 5 'a cost with a story, not an investment' → 'Name the metric and the date it clears, or you can't defend the spend.' F: Multiple slides exceed the 25-word carousel cap. Slide 4 (~44 words), Slide 5 (~40), Slide 3 (~35) must all be cut to <=25 by removing words, not fragmenting the voice. Suggested trims: Slide 3 'A decision boundary. The exact actions the agent may take alone, and where it must stop and hand off. Written down before launch.' (~24); Slide 4 'An escalation path. When the agent hits its boundary, who catches it and how fast. And a shutdown you have tested. 35% of executives can't stop a rogue agent today.' (trim to 25); Slide 5 'A payback number. Median agent payback runs 5.1 months. Name the metric and the date it clears, or you can't defend the spend.' (~24). Recount every slide after editing. Evidence and argument unchanged; [E16][E20][E44] all correctly applied."}
+ "edit_notes": "Beat 2 contains a banned cross-sentence contrastive-negation reframe ('The question a board should be asking isn't which humanoid. It's what carries the data off the floor, and where the decisions actually run.') — §6.1. Rewrite to state the positive claim directly, e.g. 'The board conversation is circling the wrong buy. What matters is what carries the data off the floor, and where the decisions actually run.' Do not reintroduce any 'not the robot / it's the layer' phrasing elsewhere in the VO. Recommended (non-blocking): replace 'the digital twin only earns its keep' in Beat 5 with a literal value statement ('is only worth building when it's wired to the real line'). Re-run the S check after the Beat 2 fix; all other checks pass."}
 ```

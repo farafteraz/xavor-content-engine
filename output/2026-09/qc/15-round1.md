@@ -1,58 +1,55 @@
-# Editor's Memo — Post 15 (explainer reel)
+# Editor's Memo — Post 15 (case-study carousel)
 
 ## Overall verdict: FAIL
 
-Two mechanical violations: a contrastive-negation reframe in the caption (§6.1) and a banned "This is" unveiling in Frame 3 (§6.6). Everything else is clean and the evidence is disciplined. These are surgical fixes.
+Two mechanical failures: a banned "This is / This isn't" unveiling used as a reframe (S), and a contrastive-negation pattern that runs through nearly every slide (S). The evidence and voice are otherwise clean and close, but the structural tell is pervasive enough that a rewrite is required.
 
 ## Per-check
 
-**V — Vocabulary: PASS.** Scanned word by word. No banned terms. "Tooling" and "governance" are fine; no filler copulas ("is," "needs," "run" are literal).
+**V — Vocabulary: PASS.** Scanned word by word. No banned terms. "Governance theater" is used to name and reject a pattern, not as puffery. "Defensible/defend" is plain business language, not on the list.
 
-**S — Structures: FAIL.**
-- Caption: "The fix isn't a new tool. It's knowing which agents you run and who owns each one." This is a textbook contrastive-negation reframe across sentence boundaries (§6.1). It does not correct a specific fact, number, or scope — it rejects a strawman ("a new tool") to pivot to the positive claim. FAIL.
-- Frame 5: "The gap isn't tooling. It's that nobody wrote down which agents run..." Same pattern, second instance. FAIL.
-- Frame 3: "This is the AI you already have." Opens with "This is" as an unveiling (§6.6). Lead with the subject. FAIL.
+**S — Structures: FAIL.** The reframe pattern is the spine of this carousel, and it appears in banned forms:
+- Slide 1: "The models work. The operating layer under them was never built." — cross-sentence contrastive negation (positive/negative pivot, not a factual correction).
+- Slide 4: "This isn't governance theater. It's engineering." — this is both a §6.6 "This is/isn't" unveiling AND a §6.1 "It's not X, it's Y" reframe. Double hit.
+- Caption: "The gap isn't the models. It's that the agents launched with no owner..." — textbook "It's not X, it's Y" contrastive negation.
+- Slide 5: "Not a rewrite of your stack. The layer that makes..." — amputated negation reframe (§6.1 "Not X. Y.").
 
-**M — Metaphor: PASS.** No analogies, no banned setups, no metaphor verbs. "Wired to your data" is literal enough to survive (agents are literally connected to data sources). "Closes the gap" is idiomatic, not a banned metaphor family.
+Any one of these fails S. Together they show the draft is built on the reframe move rather than stating claims directly.
 
-**F — Formatting: PASS.** No emojis, hashtags, exclamations, em dashes, bold/caps in body copy. The bold in `**Angle:**` and `**Evidence used:**` is scaffolding metadata, not body copy. Frame word counts all well under 25 (longest, Frame 6, is 19 words). Explainer reel is 8 frames — at the top of the 6–8 spec band but within it.
+**M — Metaphor: PASS.** "Operating layer," "meter," "kill switch," "boundary" are literal engineering terms in this context, not analogies. No banned setups or metaphor verbs. "On most floors" is mild but reads as literal shop-floor reference, acceptable.
 
-**E — Evidence: PASS.**
-- Frame 1: "43% of data breaches in 2026, up from about 20%" — traces to [E19]. Correct.
-- Frame 2: "$4.99M... Two-thirds... had no governance to limit unauthorized AI" — [E19]. Both figures and the two-thirds attach to the same IBM population. Correct, no merge.
-- Frame 4: "35%... couldn't immediately shut down a rogue agent. 36% have no plan to supervise agents" — [E20]. Both figures live in [E20], correctly attributed (IBM/Writer). Correct.
-- Frame 6: ownership standard — [E44]. Correctly used as the standard, not stated as a stat.
-- No invented numbers, no CONFLICT figure stated as single, no denominator drift. Clean.
+**F — Formatting: PASS.** No emojis, hashtags, exclamations, em dashes in body copy (the em dash in the evidence-used section is annotation, not body copy). Bold appears only on slide labels and the caption header, which are structural labels, not body emphasis. Slide word counts all under 25 (highest is Slide 4 at ~24, Slide 3 at ~24 — within cap). Fine.
 
-**O — One thing: PASS.** The post argues: the cost of unowned shadow AI is real and the fix is inventory-plus-ownership. One idea, ladders directly to the operating gap (owner and inventory = the operating work). Matches slot N2 exactly.
+**E — Evidence: PASS.** E16 (97% deployed / 29% ROI) stated correctly and matches ledger. E50 supplies the exact four-part list (owner, decision boundary, escalation path, success metric) — used faithfully. E23 used as context only, not cited as a figure, and the draft is explicit about that. No invented specifics, no conflict figures stated as single numbers. Denominators clean.
 
-**L1 — Interchangeability: PASS.** The claim is specific to shadow AI, agent inventory, and rogue-agent shutdown. You cannot swap the subject and keep the sentences ("35% couldn't shut down a rogue agent" is not generic content-marketing copy).
+**O — One thing: PASS.** Argues one thing: every production agent needs an owner, boundary, escalation path, and metric before launch, and building that is one commissioned scope. Ladders to the operator's gap. No stray second thesis.
 
-**L2 — CTO respect: PASS.** The rogue-agent-shutdown and named-owner framing reads like an engineer, not a vendor. No wince.
+**L1 — Interchangeability: PASS (narrowly).** The four requirements are specific to agents (a decision boundary and escalation path are agent-specific, not swappable for "any technology"). Slide 5's "inventory, boundaries, escalation, attribution" is concrete to this scope.
 
-**L3 — Cognitive depth: PASS.** The "I hadn't considered that" moment lands in Frame 5→6: the reframe isn't a security-tool problem, it's that nobody wrote down which agents run on what data answering to whom — and the fix is the same ownership work as the operating gap. That connects breach cost to an operations discipline the CTO hasn't filed under "security." Real.
+**L2 — CTO respect: PASS.** The core claim — a deployed agent with no owner is a thing that acts on the business accountable to no one — would land with a CTO. No wince.
 
-**R — Rhythm/human: PASS.** Frame lengths vary, reads like speech, CTA lands naturally in the "now" register. Not metronomic.
+**L3 — Cognitive depth: PASS (thin but present).** The "I hadn't considered that" moment is Slide 2: reframing the ownership question as "a thing that acts on the business, accountable to no one." That converts undefendable spend into a bounded pre-launch checklist. Delivers the slot's intended reframe.
+
+**R — Rhythm/human: WEAK PASS on rhythm, but dragged down by the reframe cadence.** The negation pattern also creates a rhythmic tic — nearly every slide sets up a wrong thing to knock down. Fixing S will fix most of this.
 
 ## Edit notes
 
-Two reframe fixes and one opener fix. Preserve the meaning; state the positive claim directly.
+The draft is one structural rewrite away from shipping. Keep the evidence, the four-part spine, the CTO reframe on Slide 2, and the CTA. Kill every reframe.
 
-1. **Caption** — kill the "isn't a new tool. It's..." reframe. Rewrite to state the fix positively:
-   "Shadow AI showed up in 43% of breaches this year, at an average cost of $4.99M. The fix is knowing which agents you run and who owns each one." (Delete "The fix isn't a new tool." entirely.)
+1. **Caption:** Replace "The gap isn't the models. It's that the agents launched with no owner, no boundary, and no meter." with a direct statement: "The models work. The agents launched with no owner, no boundary, no meter. That's the scope we build." — State the positive claim; drop the "isn't X, it's Y" scaffold.
 
-2. **Frame 3** — remove the "This is" unveiling; lead with the subject:
-   "The AI you already have. Bought by a department, wired to your data, running without an owner." (Or, if you want a full sentence: "You already run this AI — bought by a department, wired to your data, with no owner." Note: no em dash — use a comma or period.) Recommended clean version: "The AI you already own. Bought by a department, wired to your data, running with no owner."
+2. **Slide 1:** "The models work. The operating layer under them was never built." reads as a positive/negative pivot. Rewrite to two forward claims: e.g. "You deployed the agents. 97% of executives did. Only 29% see real return. The models work. What was missing is the operating layer under them." (State what's missing as a fact, not as a knock-down of the models.)
 
-3. **Frame 5** — kill the second "isn't tooling. It's that..." reframe. State it straight:
-   "The gap is operational: nobody wrote down which agents run, on what data, answering to whom." (This also strengthens the L3 payload by naming it as operational work, which ladders harder to the big idea.)
+3. **Slide 4 — mandatory fix:** Delete "This isn't governance theater. It's engineering." entirely. Open directly with the engineering claim: "This is engineering work, not policy. Owner assignment. Boundaries wired into the agent. Escalation paths that route to a human. Metrics you can defend to a CFO." Note: do not open a sentence with "This is" as an unveiling either — better: "Engineering work, not policy: owner assignment, boundaries wired into the agent, escalation that routes to a human, metrics you can defend to a CFO."
 
-Nothing else needs to move. Re-run S after these three edits and the draft ships.
+4. **Slide 5:** Delete "Not a rewrite of your stack." (amputated negation). Fold the reassurance into a positive sentence: "We build it as one bounded scope across your agents: inventory, boundaries, escalation, attribution. It sits on top of what you already deployed and makes it defensible."
+
+5. After edits, read all six slides aloud in sequence. If more than one slide still sets up a wrong idea to reject, keep cutting until the deck states claims forward.
 
 ```json
 {"verdict": "FAIL",
  "checks": {"V": "PASS", "S": "FAIL", "M": "PASS", "F": "PASS", "E": "PASS",
             "O": "PASS", "L1": "PASS", "L2": "PASS", "L3": "PASS", "R": "PASS"},
  "verify_flags": [],
- "edit_notes": "Three fixes, all §6 structure violations. (1) Caption: delete the contrastive-negation reframe 'The fix isn't a new tool.' and state the positive claim directly: 'Shadow AI showed up in 43% of breaches this year, at an average cost of $4.99M. The fix is knowing which agents you run and who owns each one.' (2) Frame 3: remove the 'This is' unveiling; lead with the subject: 'The AI you already own. Bought by a department, wired to your data, running with no owner.' (3) Frame 5: delete the second reframe 'The gap isn't tooling. It's that...' and state it straight, which also sharpens the L3 ladder: 'The gap is operational: nobody wrote down which agents run, on what data, answering to whom.' No em dashes in any replacement. Re-run check S after edits; all other checks pass as-is."}
+ "edit_notes": "The draft is built on the banned reframe move; fix S and it ships. (1) Caption: replace 'The gap isn't the models. It's that...' with a forward statement: 'The models work. The agents launched with no owner, no boundary, no meter. That's the scope we build.' (2) Slide 1: 'The models work. The operating layer under them was never built.' is a positive/negative pivot — rewrite as forward fact: 'The models work. What was missing is the operating layer under them.' (3) Slide 4 MANDATORY: delete 'This isn't governance theater. It's engineering.' (double violation: 'This is' unveiling + 'not X, it's Y' reframe). Open directly: 'Engineering work, not policy: owner assignment, boundaries wired into the agent, escalation that routes to a human, metrics you can defend to a CFO.' (4) Slide 5: delete 'Not a rewrite of your stack.' (amputated negation); fold into positive: 'It sits on top of what you already deployed and makes it defensible.' Keep E16, E50, the Slide 2 ownership reframe, and the CTA unchanged. Read all six slides aloud; no more than zero slides should set up a wrong idea to reject."}
 ```
