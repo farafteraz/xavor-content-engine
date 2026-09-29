@@ -142,3 +142,12 @@ keys. `.github/workflows/validate-engine.yml` runs both after relevant pushes to
 `v2-strategy-engine`. It has read-only repository access and writes no content.
 Passing these checks confirms integration behavior and basic provider access;
 a full live monthly generation and content-quality comparison remain separate gates.
+
+## V2 marketing foundation
+
+The confirmed commercial direction, audience, and communication standards are
+saved in [strategy/marketing-strategy.yml](strategy/marketing-strategy.yml).
+The [offering catalog](knowledge/offers.yml) records the portfolio, shared service
+roles, and development status. See the [foundation notes](strategy/README.md) for
+source boundaries, open items, and conflicts to resolve before v2 integration.
+These files are not yet loaded by the pipeline.

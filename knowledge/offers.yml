@@ -1,0 +1,121 @@
+schema_version: 1
+source:
+  type: direct_user_portfolio_description
+  recorded_on: '2026-09-29'
+  scope: Offering names, broad scope, and intended marketing roles.
+claims_policy: >-
+  These entries record the stated portfolio. Capabilities, deployments, metrics,
+  certifications, partnerships, and customer references require separate evidence.
+  Empty proof references mean proof has not yet been cataloged.
+
+offerings:
+  - id: enterprise-knowledge-agent
+    name: Xavor Enterprise Knowledge Agent
+    group: repeatable_ai_offerings
+    type: product
+    maturity: in_development
+    readiness_details: null
+    proof_refs: []
+
+  - id: forward-deployed-pod
+    name: Xavor FD pod
+    group: repeatable_ai_offerings
+    type: packaged_delivery_service
+    classification_status: provisional_interpretation
+    description: Embedded engineering delivery organized around a defined outcome.
+    description_status: interpretation_of_user_selection_requires_package_definition
+    name_status: working_name_final_name_needed
+    maturity: in_development
+    readiness_details: null
+    proof_refs: []
+
+  - id: recommendation-engine
+    name: Recommendation engine
+    group: repeatable_ai_offerings
+    type: product
+    maturity: in_development
+    readiness_details: null
+    proof_refs: []
+
+  - id: ai-use-case-development
+    name: AI use-case development
+    group: ai_services
+    type: service
+    proof_refs: []
+
+  - id: workflow-automation
+    name: Workflow automation
+    group: ai_services
+    type: service
+    proof_refs: []
+
+  - id: chatbots
+    name: Chatbots
+    group: ai_services
+    type: service
+    proof_refs: []
+
+  - id: data-engineering
+    name: Data management and engineering
+    group: cross_portfolio_services
+    type: service
+    roles:
+      - standalone_service
+      - supporting_capability_for_ai_engagements
+    proof_refs: []
+
+  - id: business-intelligence
+    name: Business intelligence
+    group: cross_portfolio_services
+    type: service
+    roles:
+      - standalone_service
+      - supporting_capability_for_ai_engagements
+    proof_refs: []
+
+  - id: nvidia-physical-ai
+    name: NVIDIA Physical AI services
+    group: platform_specialist_services
+    type: service
+    proof_refs: []
+
+  - id: plm-migration
+    name: PLM migration
+    group: platform_specialist_services
+    type: service
+    migration_paths:
+      source: Agile
+      destinations:
+        - Aras
+        - Propel
+    proof_refs: []
+
+  - id: salesforce-managed-services
+    name: Salesforce managed services
+    group: platform_specialist_services
+    type: service
+    proof_refs: []
+
+  - id: servicenow-implementation
+    name: ServiceNow implementation
+    group: platform_specialist_services
+    type: service
+    proof_refs: []
+
+  - id: enterprise-web
+    name: Enterprise web development
+    group: broader_engineering_services
+    type: service
+    proof_refs: []
+
+  - id: mobile-development
+    name: Mobile development
+    group: broader_engineering_services
+    type: service
+    proof_refs: []
+
+  - id: cloud
+    name: Cloud services
+    group: broader_engineering_services
+    type: service
+    proof_refs: []

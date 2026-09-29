@@ -1,0 +1,143 @@
+schema_version: 1
+status: confirmed_direction_with_open_items
+purpose: Persistent marketing direction for the v2 content engine.
+source:
+  type: direct_user_direction
+  recorded_on: '2026-09-29'
+  note: >-
+    Offering roles, audience, and communication standards reflect the user's
+    decisions in this task. Discovery examples informed understanding only.
+
+commercial_direction:
+  platform_specialist_services:
+    role: usual_commercial_priority
+    offering_ids:
+      - nvidia-physical-ai
+      - plm-migration
+      - salesforce-managed-services
+      - servicenow-implementation
+    order_within_group: unranked
+  ai_services:
+    role: >-
+      Support Xavor's positioning and keep it current; generate and support
+      business across the portfolio through AI engagements.
+    offering_ids:
+      - ai-use-case-development
+      - workflow-automation
+      - chatbots
+      - data-engineering
+      - business-intelligence
+  repeatable_ai_offerings:
+    role: Intended to drive growth in the AI business.
+    offering_ids:
+      - enterprise-knowledge-agent
+      - forward-deployed-pod
+      - recommendation-engine
+    maturity: in_development
+    order_within_group: unranked
+  broader_engineering_services:
+    role: Additional services in the portfolio; campaign emphasis is unspecified.
+    offering_ids:
+      - enterprise-web
+      - mobile-development
+      - cloud
+      - data-engineering
+      - business-intelligence
+  planning_rules:
+    - Use the usual service priorities as a starting point for planning.
+    - Preserve the positioning role of AI services and growth role of repeatable offerings.
+    - Change campaign emphasis only on explicit commercial direction.
+    - Assign no fixed content quotas or allocation percentages without an agreed plan.
+    - Treat the order of offerings within a group as a listing, without a rank.
+    - Keep data engineering and BI available as standalone and supporting services.
+
+audience:
+  company_size:
+    minimum: 50
+    maximum: 1000
+    unit: employees
+    status: user_confirmed
+  industries:
+    - manufacturing
+    - high-tech
+    - semiconductor
+    - healthcare
+    - medical-devices-medtech
+    - life-sciences
+    - retail
+    - real-estate
+  industry_order: unranked
+  regulatory_context: >-
+    Xavor traditionally serves regulated environments. Establish the relevant
+    regulatory requirements for each opportunity; sector membership alone does
+    not establish which requirements apply.
+  geography: null
+  roles:
+    - CTO
+    - CIO
+    - CDO
+    - CEO
+    - COO
+    - vice-presidents
+    - department-heads
+  sophistication: advanced
+  buying_dynamics:
+    source: User description of Xavor's sales experience.
+    business_leadership: Owns the need, challenge, and desired business outcomes.
+    technical_leadership: >-
+      Typically makes the technical decision and is responsible for execution
+      and implementation; also evaluates approaches, technologies, and solutions.
+    initial_contact: Either business or technical leadership can initiate the conversation.
+    communication_requirement: Address both audiences and connect their concerns.
+
+communication:
+  confirmed_standards:
+    - Assume an informed reader with existing systems, experience, and technical understanding.
+    - Use clear language while preserving depth, precision, and substantive tradeoffs.
+    - Go beyond basic use-case descriptions and common knowledge.
+    - Address both business outcomes and the choices that determine technical execution.
+    - Include evaluation of competing approaches, technologies, and solutions when relevant.
+    - Avoid generic educational or theoretical commentary without a useful Xavor argument.
+    - Keep content relevant to Xavor's positioning and commercial objectives.
+  editorial_guidance:
+    status: implementation_guidance_derived_from_user_direction
+    rules:
+      - Give each piece a primary reader and a clear argument; balance audiences across the campaign.
+      - Preserve an advanced register for both business and technical readers.
+      - Include technical detail when it changes a decision or explains a business consequence.
+      - Select the starting point from the buying situation; either audience can initiate it.
+      - Establish a specific reason to discuss AI in relation to the offering and buyer.
+      - Choose topics from strategy, supported Xavor knowledge, evidence, and content history.
+
+evidence_and_discovery:
+  offering_catalog: knowledge/offers.yml
+  public_claims_policy:
+    - Listing an offering establishes portfolio intent, without certifying a feature or result.
+    - Verify delivery capabilities, customer results, and product availability separately.
+    - Use development status accurately when describing repeatable AI offerings.
+    - Keep generated drafts distinct from confirmed published content.
+  discovery_context_policy:
+    - Use discovery examples to improve judgment about how prospects think.
+    - Treat inferred patterns as provisional and account-specific until supported more broadly.
+    - Keep strategy and communication priorities grounded in explicit business direction.
+    - Avoid deriving mandatory themes, campaign topics, or audience quotas from isolated examples.
+    - Exclude raw meeting notes, customer names, and private commercial details from this repository.
+    - Require separate approval and evidence for public customer references or claims.
+
+open_items:
+  - id: geographic-focus
+    question: Which markets or regions should campaigns target?
+    affects: geographic targeting
+    policy: Leave unspecified until confirmed.
+  - id: forward-deployed-pod-definition
+    question: What are the final name, package, scope, and commercial terms?
+    affects: offer description and claims
+    policy: Use the working label and provisional classification in the offering catalog.
+  - id: product-readiness
+    question: What can be demonstrated, sold, or delivered for each repeatable offering today?
+    affects: product claims and calls to action
+    policy: Retain in-development status; verify readiness for each proposed claim.
+  - id: proof-and-publication-records
+    question: Which capabilities, results, case studies, and publication records are verified?
+    affects: proof library and content history
+    policy: Require source review before accepting proof or recording publication.
