@@ -45,7 +45,11 @@ class ModelRouter:
                 return adapter.generate(prompt, self.system, model, max_tokens)
             except Exception as exc:
                 # Retry transient transport/rate/server errors, never auth or bad requests.
-                if getattr(exc, "code", None) == "insufficient_quota":
+                if getattr(exc, "code", None) in {
+                    "insufficient_quota", "credit_balance_exhausted",
+                    "organization_spend_limit_exceeded", "project_spend_limit_exceeded",
+                    "organization_usage_limit_exceeded",
+                }:
                     raise
                 status = getattr(exc, "status_code", None)
                 transient = status in (408, 409, 429) or (status is not None and status >= 500)

@@ -20,6 +20,8 @@ for role in ("strategy", "writer"):
         print(f"FAIL: {provider}/{model}: {type(exc).__name__}; HTTP {getattr(exc, 'status_code', 'n/a')}")
         # Report only known error codes, never provider bodies or credentials.
         code = getattr(exc, "code", None)
-        if code in {"insufficient_quota", "rate_limit_exceeded", "model_not_found", "invalid_api_key"}:
+        if code in {"insufficient_quota", "rate_limit_exceeded", "model_not_found", "invalid_api_key",
+                    "credit_balance_exhausted", "organization_spend_limit_exceeded",
+                    "project_spend_limit_exceeded", "organization_usage_limit_exceeded", "slow_down"}:
             print(f"Provider error code: {code}")
 sys.exit(1 if failed else 0)
