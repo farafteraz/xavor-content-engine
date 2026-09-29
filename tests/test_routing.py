@@ -44,6 +44,14 @@ class RoutingTests(unittest.TestCase):
                 router.generate('writer', 'prompt')
             self.assertEqual(call.call_count, 1)
 
+    def test_quota_errors_do_not_retry(self):
+        router = ModelRouter('v1', 'style')
+        error = Exception('private body'); error.status_code = 429; error.code = 'insufficient_quota'
+        with patch.object(anthropic_client, 'generate', side_effect=error) as call:
+            with self.assertRaises(Exception):
+                router.generate('writer', 'input')
+            self.assertEqual(call.call_count, 1)
+
     def test_adapters_reject_incomplete_or_empty_text(self):
         with patch.object(openai_client, 'client') as client:
             for status, text in [('incomplete', 'partial'), ('completed', '')]:
