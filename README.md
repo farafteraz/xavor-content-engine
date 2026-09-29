@@ -32,7 +32,7 @@ report collects all verify flags in one place.
 ## Setup
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install anthropic
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 cp .env.example .env   # then put your real ANTHROPIC_API_KEY in .env
 ```
 
@@ -93,3 +93,52 @@ only as a record of the change; nothing needs applying.
 
 Prompt edits are the intended maintenance path; `run.py` is just plumbing and should
 rarely need to change.
+
+## V2 provider routing (opt-in)
+
+The default `--profile v1` keeps all stages on Claude using `CONTENT_MODEL`.
+The scheduled workflow continues to use this profile. Adding `OPENAI_API_KEY`
+does not switch the production pipeline.
+
+`--profile hybrid` routes stages 1-3 and QC to OpenAI; drafting and revisions stay
+on Claude. This step changes provider routing only. Opportunity generation,
+strategic rejection, and approval gates are not implemented yet.
+
+| Role | Default provider | Model setting | Default model |
+| --- | --- | --- | --- |
+| Strategy | OpenAI | `STRATEGY_MODEL` | `gpt-5.6-sol` |
+| Writer | Anthropic | `DRAFTING_MODEL` | `CONTENT_MODEL`, then `claude-opus-4-8` |
+| Editor | OpenAI | `EDITOR_MODEL` | `STRATEGY_MODEL`, then `gpt-5.6-sol` |
+
+Provider overrides are `STRATEGY_PROVIDER`, `DRAFTING_PROVIDER`, and
+`EDITOR_PROVIDER` (`openai` or `anthropic`). Set the matching model when changing
+a provider. `STRATEGY_REASONING_EFFORT` controls OpenAI calls and defaults to
+`medium`. Both API keys are required for the default hybrid configuration.
+OpenAI calls use the [Responses API](https://developers.openai.com/api/docs/guides/text)
+and disable response storage. [GPT-5.6 Sol model documentation](https://developers.openai.com/api/docs/models/gpt-5.6-sol).
+
+Use a new, empty directory outside `output/` and `samples/` for a comparison run:
+
+```bash
+.venv/bin/python run.py --profile hybrid --month 2026-08 \
+  --corpus output/2026-08/0-corpus.md --output-dir work/august-hybrid
+```
+
+Hybrid runs currently start fresh; resume with `--from-stage` remains available
+for v1. The archived baseline stays unchanged. Add `OPENAI_API_KEY` to the
+repository's Actions secrets for the branch validation workflow.
+
+### Validation
+
+```bash
+python -m unittest discover -s tests -v
+python scripts/check_providers.py
+```
+
+The first command uses simulated provider responses to exercise all pipeline
+stages, revisions, v1 resume, routing, and error handling without API charges.
+The second makes a tiny live request to OpenAI and Anthropic using environment
+keys. `.github/workflows/validate-engine.yml` runs both after relevant pushes to
+`v2-strategy-engine`. It has read-only repository access and writes no content.
+Passing these checks confirms integration behavior and basic provider access;
+a full live monthly generation and content-quality comparison remain separate gates.

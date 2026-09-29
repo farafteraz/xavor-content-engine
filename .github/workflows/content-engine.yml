@@ -27,12 +27,15 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install anthropic
+        run: pip install -r requirements.txt
 
       - name: Run the pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CONTENT_MODEL: claude-opus-4-8
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          STRATEGY_MODEL: gpt-5.6-sol
+          DRAFTING_MODEL: claude-opus-4-8
           # Xavor-Sentinel is private, and the job's built-in GITHUB_TOKEN is scoped to
           # this repo only — reading another private repo needs its own token.
           SENTINEL_TOKEN: ${{ secrets.SENTINEL_TOKEN }}

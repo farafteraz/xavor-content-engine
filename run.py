@@ -19,6 +19,7 @@ Usage:
 
 Environment (env vars or a local .env file; never hardcoded):
   ANTHROPIC_API_KEY   required
+  OPENAI_API_KEY      required for --profile hybrid
   CONTENT_MODEL       default: claude-opus-4-8
   SENTINEL_REPO       default: farafteraz/Xavor-Sentinel (digests/ dir is fetched)
   SENTINEL_TOKEN      required while the Sentinel repo is private — a GitHub token
@@ -32,7 +33,6 @@ import json
 import os
 import re
 import sys
-import time
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -57,46 +57,26 @@ def load_env():
 
 load_env()
 
-MODEL = os.environ.get("CONTENT_MODEL", "claude-opus-4-8")
 SENTINEL_REPO = os.environ.get("SENTINEL_REPO", "farafteraz/Xavor-Sentinel")
 SENTINEL_TOKEN = (os.environ.get("SENTINEL_TOKEN")
                   or os.environ.get("GH_TOKEN")
                   or os.environ.get("GITHUB_TOKEN"))
 
-try:
-    import anthropic
-except ImportError:
-    sys.exit("pip install anthropic")
+from llm import ModelRouter
 
-if "ANTHROPIC_API_KEY" not in os.environ:
-    sys.exit("ANTHROPIC_API_KEY is not set (env var or .env file).")
-
-client = anthropic.Anthropic()
+router = None
 
 
-# ── Model call ────────────────────────────────────────────────────────────────
+def run_strategy(prompt, label=""):
+    return router.generate("strategy", prompt, label)
 
-def run_claude(prompt, label=""):
-    for attempt in range(5):
-        try:
-            response = client.messages.create(
-                model=MODEL,
-                max_tokens=16000,
-                system=STYLE_SPEC,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            text = "".join(b.text for b in response.content if b.type == "text").strip()
-            if not text:
-                raise RuntimeError("empty response")
-            return text
-        except Exception as e:
-            if attempt < 4:
-                wait = 20 * (attempt + 1)
-                print(f"  [{label}] attempt {attempt + 1} failed ({e}), retrying in {wait}s")
-                time.sleep(wait)
-            else:
-                raise
-    return ""
+
+def run_writer(prompt, label=""):
+    return router.generate("writer", prompt, label)
+
+
+def run_editor(prompt, label=""):
+    return router.generate("editor", prompt, label)
 
 
 def prompt_template(name):
@@ -195,7 +175,7 @@ def stage1(outdir, corpus, month_label):
     print("Stage 1 — strategic brief")
     prompt = (prompt_template("1-strategic-brief.md")
               .replace("{MONTH}", month_label).replace("{CORPUS}", corpus))
-    brief = run_claude(prompt, "strategic-brief")
+    brief = run_strategy(prompt, "strategic-brief")
     (outdir / "1-strategic-brief.md").write_text(brief)
     return brief
 
@@ -205,7 +185,7 @@ def stage2(outdir, strategic_brief, month_label):
     prompt = (prompt_template("2-creative-brief.md")
               .replace("{MONTH}", month_label)
               .replace("{STRATEGIC_BRIEF}", strategic_brief))
-    brief = run_claude(prompt, "creative-brief")
+    brief = run_strategy(prompt, "creative-brief")
     (outdir / "2-creative-brief.md").write_text(brief)
     return brief
 
@@ -227,7 +207,7 @@ def stage3(outdir, creative_brief, ledger, month_label, year, month):
               .replace("{WEEKS}", publishing_weeks(year, month))
               .replace("{CREATIVE_BRIEF}", creative_brief)
               .replace("{LEDGER}", ledger))
-    cal = run_claude(prompt, "calendar")
+    cal = run_strategy(prompt, "calendar")
     (outdir / "3-calendar.md").write_text(cal)
     slots = extract_json_block(cal)["posts"]
     if len(slots) != 15:
@@ -260,7 +240,7 @@ def stage4(outdir, slots, big_idea, creative_brief, ledger):
             print(f"  post {slot['n']:02d}: draft exists, skipping")
             return slot["n"], path.read_text()
         territory = extract_territory(creative_brief, slot["territory"])
-        text = run_claude(draft_prompt(slot, big_idea, territory, ledger),
+        text = run_writer(draft_prompt(slot, big_idea, territory, ledger),
                           f"draft-{slot['n']:02d}")
         path.write_text(text)
         print(f"  drafted post {slot['n']:02d} ({slot['format']})")
@@ -281,7 +261,7 @@ def qc_one(slot, draft, big_idea, ledger):
               .replace("{SLOT}", json.dumps(slot, indent=2))
               .replace("{LEDGER}", ledger)
               .replace("{DRAFT}", draft))
-    memo = run_claude(prompt, f"qc-{slot['n']:02d}")
+    memo = run_editor(prompt, f"qc-{slot['n']:02d}")
     try:
         verdict = extract_json_block(memo)
     except Exception:
@@ -326,7 +306,7 @@ def stage5(outdir, slots, drafts, big_idea, creative_brief, ledger):
                 f"### Editor's notes\n{verdict['edit_notes']}\n\n"
                 f"### The failed draft\n{draft}"
             )
-            draft = run_claude(
+            draft = run_writer(
                 draft_prompt(slot, big_idea, territory, ledger, revision),
                 f"rewrite-{n:02d}")
         final = history[-1]
@@ -369,12 +349,21 @@ def stage5(outdir, slots, drafts, big_idea, creative_brief, ledger):
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
+    global router
     p = argparse.ArgumentParser()
     p.add_argument("--month", help="target month YYYY-MM (default: next month)")
     p.add_argument("--corpus", help="corpus file instead of fetching from the Sentinel repo")
     p.add_argument("--from-stage", type=int, default=0,
                    help="reuse saved artifacts for earlier stages (0-4)")
+    p.add_argument("--profile", choices=("v1", "hybrid"), default="v1",
+                   help="v1: Claude for all roles; hybrid: OpenAI strategy/review, Claude writing")
+    p.add_argument("--output-dir", help="separate output directory (required for hybrid)")
     args = p.parse_args()
+    if args.profile == "hybrid" and not args.output_dir:
+        p.error("--profile hybrid requires --output-dir to protect existing outputs")
+    router = ModelRouter(args.profile, STYLE_SPEC)
+    router.validate()
+
 
     if args.month:
         year, month = map(int, args.month.split("-"))
@@ -387,9 +376,16 @@ def main():
         else:
             year, month = (today.year + (today.month == 12), today.month % 12 + 1)
     month_label = f"{MONTH_NAMES[month]} {year}"
-    outdir = ROOT / "output" / f"{year}-{month:02d}"
+    outdir = (Path(args.output_dir).resolve() if args.output_dir
+              else ROOT / "output" / f"{year}-{month:02d}")
+    if args.profile == "hybrid":
+        for protected in (ROOT / "output", ROOT / "samples"):
+            if outdir == protected.resolve() or protected.resolve() in outdir.parents:
+                p.error("hybrid output must be outside output/ and samples/")
+        if outdir.exists() and any(outdir.iterdir()):
+            p.error("hybrid output directory must be empty to avoid mixing runs")
     outdir.mkdir(parents=True, exist_ok=True)
-    print(f"Xavor Content Engine — {month_label} — model {MODEL}\n")
+    print(f"Xavor Content Engine — {month_label} — {router.describe()}\n")
 
     fs = args.from_stage
     corpus = (outdir / "0-corpus.md").read_text() if fs > 0 else stage0(outdir, args.corpus)
