@@ -150,8 +150,23 @@ saved in [strategy/marketing-strategy.yml](strategy/marketing-strategy.yml).
 The [offering catalog](knowledge/offers.yml) records the portfolio, shared service
 roles, and development status. See the [foundation notes](strategy/README.md) for
 source boundaries, open items, and conflicts to resolve before v2 integration.
-These files are not yet loaded by the pipeline.
+These files are loaded by the opt-in opportunity runner; production `run.py` does not load them.
 
 The initial [website-sourced proof library](knowledge/README.md) links service
 descriptions and case studies to the offering catalog, with project stages and
-claim limits. It is also a planning input and is not yet loaded by the pipeline.
+claim limits. The opt-in opportunity runner reads these records; production `run.py` does not.
+
+## V2 opportunity review (opt-in)
+
+The [opportunity review runner](strategy/opportunity-review.md) uses the agreed
+strategy and proof library to propose and critique content opportunities. It
+compares them with the August v1 baseline and stops for human review before any
+calendar or posts. Prepare inputs without API credits:
+
+```bash
+python opportunities.py --month 2026-08 --corpus output/2026-08/0-corpus.md \
+  --output-dir work/august-opportunities-prepared --prepare-only
+```
+
+A live run uses a new directory and omits `--prepare-only`. Model access and
+content quality require separate live validation. The scheduled v1 run is unchanged.

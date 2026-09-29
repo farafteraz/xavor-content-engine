@@ -5,8 +5,8 @@ commercial direction, audience, and communication standards.
 [../knowledge/offers.yml](../knowledge/offers.yml) defines the offering IDs and
 records development status and unresolved descriptions.
 
-Both files are planning inputs for the future v2 strategy stages. The current
-`run.py` does not load them. Adding these files leaves production behavior,
+The opt-in [opportunity review runner](opportunity-review.md) loads these files.
+The current production `run.py` does not load them. Adding these files leaves production behavior,
 Sentinel, prompts, and the preserved v1 baseline unchanged. API credits are
 unnecessary for reviewing this foundation.
 
@@ -32,7 +32,8 @@ required before any customer reference can enter publishable material.
 
 ## Integration requirements
 
-Before connecting this foundation to v2 generation:
+The opportunity runner applies the confirmed direction with dedicated prompts.
+Before extending v2 into the existing calendar and writing stages:
 
 - Load the strategy and offering catalog together; validate referenced offering IDs.
 - Apply the confirmed audience and commercial direction to v2 stages.

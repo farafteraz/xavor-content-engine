@@ -1,0 +1,50 @@
+name: V2 opportunity review
+on:
+  push:
+    branches: [v2-strategy-engine]
+    paths:
+      - 'opportunities.py'
+      - 'prompts/opportunities/**'
+      - 'strategy/**'
+      - 'knowledge/**'
+      - 'llm/**'
+      - 'tests/**'
+      - 'requirements.txt'
+      - '.github/workflows/opportunity-review.yml'
+  workflow_dispatch:
+    inputs:
+      generate:
+        description: Generate and critique August opportunities using funded API access
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Test offline
+        run: python -m unittest discover -s tests -v
+      - name: Prepare August comparison without API calls
+        run: python opportunities.py --month 2026-08 --corpus output/2026-08/0-corpus.md --output-dir work/august-prepared --prepare-only
+      - name: Generate and stop for review
+        if: github.event_name == 'workflow_dispatch' && inputs.generate
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          STRATEGY_REASONING_EFFORT: medium
+        run: python opportunities.py --month 2026-08 --corpus output/2026-08/0-corpus.md --output-dir work/august-review
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: august-opportunity-review
+          path: |
+            work/august-prepared/
+            work/august-review/
+          if-no-files-found: ignore
+          retention-days: 14

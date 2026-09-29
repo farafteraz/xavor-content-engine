@@ -23,8 +23,9 @@ class ModelRouter:
                            os.getenv("EDITOR_MODEL") or strategy),
             }
 
-    def validate(self):
-        for provider, model in self.routes.values():
+    def validate(self, roles=None):
+        for role in (roles if roles is not None else self.routes):
+            provider, model = self.routes[role]
             if provider not in ("openai", "anthropic"):
                 raise ValueError(f"Unsupported provider: {provider}")
             key = "OPENAI_API_KEY" if provider == "openai" else "ANTHROPIC_API_KEY"

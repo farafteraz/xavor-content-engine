@@ -45,6 +45,7 @@ Website case publication does not establish LinkedIn publication history.
 
 ## Integration status
 
-The current pipeline does not load these files. Sentinel, production prompts,
+The opt-in `opportunities.py` runner loads these files. The production `run.py`
+pipeline does not. Sentinel, production prompts,
 scheduled generation, and the v1 baseline are unchanged. Future v2 stages should
 validate references and consume scope and restrictions alongside each claim.
