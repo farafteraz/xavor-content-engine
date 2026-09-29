@@ -6,7 +6,8 @@ source:
 claims_policy: >-
   These entries record the stated portfolio. Capabilities, deployments, metrics,
   certifications, partnerships, and customer references require separate evidence.
-  Empty proof references mean proof has not yet been cataloged.
+  References distinguish advertised capabilities, direct case evidence, and adjacent experience.
+  Empty references mean no matching evidence has been cataloged, not that capability is absent.
 
 offerings:
   - id: enterprise-knowledge-agent
@@ -15,7 +16,9 @@ offerings:
     type: product
     maturity: in_development
     readiness_details: null
+    capability_refs: []
     proof_refs: []
+    related_proof_refs: [private-supply-chain-knowledge, healthcare-ios-support-poc]
 
   - id: forward-deployed-pod
     name: Xavor FD pod
@@ -27,7 +30,9 @@ offerings:
     name_status: working_name_final_name_needed
     maturity: in_development
     readiness_details: null
+    capability_refs: []
     proof_refs: []
+    related_proof_refs: []
 
   - id: recommendation-engine
     name: Recommendation engine
@@ -35,25 +40,33 @@ offerings:
     type: product
     maturity: in_development
     readiness_details: null
+    capability_refs: []
     proof_refs: []
+    related_proof_refs: [retail-salesforce-agents]
 
   - id: ai-use-case-development
     name: AI use-case development
     group: ai_services
     type: service
-    proof_refs: []
+    capability_refs: []
+    proof_refs: [private-supply-chain-knowledge, companion-robot, retail-salesforce-agents, healthcare-ios-support-poc]
+    related_proof_refs: []
 
   - id: workflow-automation
     name: Workflow automation
     group: ai_services
     type: service
-    proof_refs: []
+    capability_refs: [servicenow-services]
+    proof_refs: [retail-salesforce-agents, servicenow-vendor-access]
+    related_proof_refs: []
 
   - id: chatbots
     name: Chatbots
     group: ai_services
     type: service
-    proof_refs: []
+    capability_refs: []
+    proof_refs: [private-supply-chain-knowledge, retail-salesforce-agents, healthcare-ios-support-poc]
+    related_proof_refs: []
 
   - id: data-engineering
     name: Data management and engineering
@@ -62,7 +75,9 @@ offerings:
     roles:
       - standalone_service
       - supporting_capability_for_ai_engagements
-    proof_refs: []
+    capability_refs: [data-and-bi-services]
+    proof_refs: [real-estate-data-governance]
+    related_proof_refs: []
 
   - id: business-intelligence
     name: Business intelligence
@@ -71,13 +86,17 @@ offerings:
     roles:
       - standalone_service
       - supporting_capability_for_ai_engagements
-    proof_refs: []
+    capability_refs: [data-and-bi-services]
+    proof_refs: [real-estate-data-governance]
+    related_proof_refs: []
 
   - id: nvidia-physical-ai
     name: NVIDIA Physical AI services
     group: platform_specialist_services
     type: service
-    proof_refs: []
+    capability_refs: [physical-ai-services]
+    proof_refs: [companion-robot]
+    related_proof_refs: []
 
   - id: plm-migration
     name: PLM migration
@@ -88,34 +107,46 @@ offerings:
       destinations:
         - Aras
         - Propel
-    proof_refs: []
+    capability_refs: [aras-migration-services, propel-migration-services]
+    proof_refs: [aras-partner-access]
+    related_proof_refs: []
 
   - id: salesforce-managed-services
     name: Salesforce managed services
     group: platform_specialist_services
     type: service
+    capability_refs: [salesforce-administration-services]
     proof_refs: []
+    related_proof_refs: [retail-salesforce-agents]
 
   - id: servicenow-implementation
     name: ServiceNow implementation
     group: platform_specialist_services
     type: service
-    proof_refs: []
+    capability_refs: [servicenow-services]
+    proof_refs: [servicenow-vendor-access]
+    related_proof_refs: []
 
   - id: enterprise-web
     name: Enterprise web development
     group: broader_engineering_services
     type: service
-    proof_refs: []
+    capability_refs: []
+    proof_refs: [healthcare-community-platform]
+    related_proof_refs: []
 
   - id: mobile-development
     name: Mobile development
     group: broader_engineering_services
     type: service
-    proof_refs: []
+    capability_refs: []
+    proof_refs: [healthcare-community-platform]
+    related_proof_refs: [healthcare-ios-support-poc]
 
   - id: cloud
     name: Cloud services
     group: broader_engineering_services
     type: service
-    proof_refs: []
+    capability_refs: []
+    proof_refs: [private-supply-chain-knowledge, retail-salesforce-agents]
+    related_proof_refs: []

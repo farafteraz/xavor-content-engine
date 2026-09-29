@@ -48,6 +48,7 @@ Before connecting this foundation to v2 generation:
 - Leave missing geography, readiness, package details, proof, and publication
   records unspecified. The YAML open items describe each gap.
 
-The next implementation step is a sourced Xavor knowledge and proof library.
-Public claims and published-content history must have traceable evidence before
-they can guide the opportunity generator and critic.
+The initial [knowledge and proof library](../knowledge/README.md) now records
+website-sourced capabilities and case studies with claim restrictions. Product
+readiness gaps remain explicit. Published-content history still needs separate
+evidence before it can guide the opportunity generator and critic.

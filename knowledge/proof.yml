@@ -1,0 +1,179 @@
+schema_version: 1
+reviewed_on: '2026-09-29'
+source_policy: first_party_website_reports_not_independently_verified
+scope: Initial representative library, not an exhaustive website inventory.
+reuse_policy: >-
+  Attribute project experience to Xavor's published case study. Preserve project
+  stage, anonymous customer descriptions, and qualifications. These records do
+  not establish product readiness, customer permission for new endorsements,
+  guaranteed outcomes, or independent validation. Recheck sources before publishing.
+
+capabilities:
+  - id: physical-ai-services
+    offer_refs: [nvidia-physical-ai]
+    source_url: https://www.xavor.com/physical-ai/
+    source_section: Engineering services
+    evidence_type: advertised_service
+    supported_scope: NVIDIA-based robotics engineering, simulation, edge deployment, and enterprise integration.
+    limits: Listed use cases and optimization targets are not measured customer results.
+
+  - id: aras-migration-services
+    offer_refs: [plm-migration]
+    source_url: https://www.xavor.com/aras-plm-services/
+    source_section: Agile to Aras migration
+    evidence_type: advertised_service
+    supported_scope: Agile-to-Aras migration, data preparation, workflow configuration, integration, and handover.
+    limits: Does not establish a standard migration duration or guaranteed completeness.
+
+  - id: propel-migration-services
+    offer_refs: [plm-migration]
+    source_url: https://www.xavor.com/propel-plm/
+    source_section: Migration services
+    evidence_type: advertised_service
+    supported_scope: Agile-to-Propel migration, configuration, integrations, and adoption support.
+    limits: No completed Propel migration case has been established in this initial review.
+
+  - id: salesforce-administration-services
+    offer_refs: [salesforce-managed-services]
+    source_url: https://www.xavor.com/salesforce-administration/
+    source_section: Administration and support
+    evidence_type: advertised_service
+    supported_scope: Salesforce configuration, access administration, reporting, data governance, and ongoing support.
+    limits: Round-the-clock support depends on the agreed contract; no universal service level is established.
+
+  - id: servicenow-services
+    offer_refs: [servicenow-implementation, workflow-automation]
+    source_url: https://www.xavor.com/service-now/
+    source_section: Services
+    evidence_type: advertised_service
+    supported_scope: ServiceNow implementation, customization, integration, testing, and support.
+    limits: Advertised modules do not each establish delivered project experience.
+
+  - id: data-and-bi-services
+    offer_refs: [data-engineering, business-intelligence]
+    source_url: https://www.xavor.com/bi-data-analytics/
+    source_section: Data engineering and analytics services
+    evidence_type: advertised_service
+    supported_scope: Data pipelines, transformation, modeling, governance, and Power BI or Tableau reporting, including foundations for AI.
+    limits: Retain both standalone analytics and supporting AI roles; do not imply every project includes AI.
+
+cases:
+  - id: private-supply-chain-knowledge
+    source_url: https://www.xavor.com/case-studies/private-chatgpt-for-secure-supply-chain-knowledge/
+    source_section: Initial Implementation; Phase Two
+    customer: Unnamed global medical device manufacturer, supply-chain department
+    reported_stage: Implemented in phases; final hosting boundary needs clarification
+    offer_refs: [ai-use-case-development, chatbots, cloud]
+    related_offer_refs: [enterprise-knowledge-agent]
+    business_context: Sensitive operational documents and tabular data needed controlled AI access.
+    technical_choice: Initial PrivateGPT/Ollama implementation followed by AWS Bedrock to address concurrency and performance constraints.
+    reusable_claim: Xavor reports a phased knowledge-platform implementation that changed architecture as scaling requirements emerged.
+    limits:
+      - Related custom engineering experience does not establish delivery of the named Enterprise Knowledge Agent product.
+      - The page combines on-premises claims with a later Bedrock architecture; do not claim the final system is entirely on premises.
+      - Omit performance percentages, unlimited concurrency, and absolute data-boundary claims pending clarification.
+
+  - id: aras-partner-access
+    source_url: https://www.xavor.com/case-studies/orcale-agile-to-aras-innovator-migration/
+    source_section: Solution; Outcomes
+    customer: Unnamed cinema technology manufacturer
+    reported_stage: Implementation reported
+    offer_refs: [plm-migration]
+    related_offer_refs: []
+    business_context: External partners required controlled access to manufacturing product information.
+    technical_choice: Aras permissions and attribute-based policies governed released-item visibility and editing within an Agile-to-Aras migration.
+    reusable_claim: Xavor reports implementing partner access controls in an Agile-to-Aras migration context.
+    limits:
+      - The case principally substantiates access-control work, not every aspect of an end-to-end migration.
+      - Do not extend this evidence to Propel delivery or name the anonymous customer.
+
+  - id: companion-robot
+    source_url: https://www.xavor.com/case-studies/building-a-high-eq-companion-robot-to-support-elderly-care/
+    source_section: Solution; Testing and outcomes
+    customer: Elderly-care application; customer identity not established
+    reported_stage: Controlled customer testing
+    offer_refs: [nvidia-physical-ai, ai-use-case-development]
+    related_offer_refs: []
+    business_context: Assistive robotics combines observation, interaction, and movement in care environments.
+    technical_choice: NVIDIA Jetson Orin, computer vision, ROS navigation, and conversational components with cloud speech services.
+    reusable_claim: Xavor reports building and testing a companion robot combining edge perception, navigation, and conversational AI.
+    limits:
+      - Controlled testing does not establish broad production deployment, clinical effectiveness, or safety certification.
+      - Do not describe all processing as local; cloud services are part of the reported architecture.
+      - The case names Navi while the service page mentions Rui and NaviGait; their relationship is unresolved.
+      - Omit observation-effort reduction claims without measurement details.
+
+  - id: retail-salesforce-agents
+    source_url: https://www.xavor.com/case-studies/delivering-personalized-retail-support-with-multi-agent-ai-on-salesforce/
+    source_section: Solution; Outcomes
+    customer: Unnamed specialty retailer
+    reported_stage: Solution implementation reported; benefit scale depends on rollout and adoption
+    offer_refs: [ai-use-case-development, chatbots, workflow-automation, cloud]
+    related_offer_refs: [recommendation-engine, salesforce-managed-services]
+    business_context: Product discovery, recommendations, and order support required connected customer and catalog context.
+    technical_choice: Specialist agents orchestrated with LangGraph, Salesforce workflows, Bedrock, and grounded product retrieval.
+    reusable_claim: Xavor reports integrating specialist retail-support agents with Salesforce and product data.
+    limits:
+      - This supports custom recommendation experience, not readiness of the named recommendation-engine product.
+      - Salesforce integration is adjacent evidence, not proof of an ongoing managed-service contract or service level.
+      - Do not assign quantified business gains to the implementation.
+
+  - id: real-estate-data-governance
+    source_url: https://www.xavor.com/case-studies/modernizing-real-estate-analytics-with-data-governance-power-bi/
+    source_section: Solution; Tools and tech stack
+    customer: Unnamed real estate organization
+    reported_stage: Implementation reported
+    offer_refs: [data-engineering, business-intelligence]
+    related_offer_refs: []
+    business_context: Inconsistent customer records and data definitions undermined property and finance reporting.
+    technical_choice: Purview quality rules, Athena scans, Python customer matching, and Power BI models and dashboards.
+    reusable_claim: Xavor reports combining data-quality engineering with property and financial analytics delivery.
+    limits:
+      - This supports standalone data and BI experience; it does not establish a recommendation product or AI transformation outcome.
+      - Do not equate governance controls with independent compliance certification.
+
+  - id: servicenow-vendor-access
+    source_url: https://www.xavor.com/case-studies/automating-vendor-access-management-on-servicenow-for-an-asset-management-firm/
+    source_section: Solution
+    customer: Unnamed global asset management firm
+    reported_stage: Go-live reported
+    offer_refs: [servicenow-implementation, workflow-automation]
+    related_offer_refs: []
+    business_context: Temporary external access lacked consistent intake, approvals, and expiry oversight.
+    technical_choice: Service Catalog intake, sequenced approvals, a dedicated access register, renewal reminders, and removal tasks.
+    reusable_claim: Xavor reports implementing a governed vendor-access workflow within ServiceNow.
+    limits:
+      - Automated removal tasks do not establish automatic revocation in downstream systems.
+      - Omit percentage improvements until baseline and measurement details are available.
+      - The controls do not establish a regulatory compliance guarantee.
+
+  - id: healthcare-ios-support-poc
+    source_url: https://www.xavor.com/case-studies/providing-timely-healthcare-with-a-private-ai-support-agent/
+    source_section: Tools and tech stack; Production Architecture Path
+    customer: Unnamed healthcare provider
+    reported_stage: Proof of concept; production architecture proposed
+    offer_refs: [ai-use-case-development, chatbots]
+    related_offer_refs: [mobile-development, enterprise-knowledge-agent]
+    business_context: Application-specific training support required private handling of documentation.
+    technical_choice: Local inference, hybrid semantic and keyword retrieval, and streaming APIs for an iOS application.
+    reusable_claim: Xavor reports a private retrieval-based support-agent proof of concept for an iOS application.
+    limits:
+      - Do not describe the proposed production architecture as deployed.
+      - Integration with an iOS application does not establish delivery of the entire mobile app.
+      - Omit percentage outcomes without measurement context; do not imply clinical validation.
+
+  - id: healthcare-community-platform
+    source_url: https://www.xavor.com/case-studies/building-a-secure-digital-community-platform-for-healthcare-professionals/
+    retrieval_method: Search-indexed page text; direct page fetch failed during review
+    source_section: Solution; Mobile Experience
+    customer: Healthcare professional community; customer identity not established
+    reported_stage: Platform delivery reported
+    offer_refs: [enterprise-web, mobile-development]
+    related_offer_refs: []
+    business_context: Professional discussions, resources, and communications required shared web and mobile access.
+    technical_choice: Umbraco content management, React Native mobile access, role-based access, and notifications.
+    reusable_claim: Xavor reports delivering web and mobile community capabilities for healthcare professionals.
+    limits:
+      - Reopen the source before public reuse because this review relied on indexed text.
+      - Do not reuse engagement, publishing-speed, or scalability figures without measurement details.
+      - Access controls do not establish certification or compliance with a particular law.

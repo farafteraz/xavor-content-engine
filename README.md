@@ -151,3 +151,7 @@ The [offering catalog](knowledge/offers.yml) records the portfolio, shared servi
 roles, and development status. See the [foundation notes](strategy/README.md) for
 source boundaries, open items, and conflicts to resolve before v2 integration.
 These files are not yet loaded by the pipeline.
+
+The initial [website-sourced proof library](knowledge/README.md) links service
+descriptions and case studies to the offering catalog, with project stages and
+claim limits. It is also a planning input and is not yet loaded by the pipeline.
