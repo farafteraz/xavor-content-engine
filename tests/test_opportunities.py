@@ -15,7 +15,7 @@ def fixture():
     ref, text = next((k, v) for k, v in inputs['corpus'].items() if len(v) >= 30)
     case = inputs['proof']['cases'][0]
     data = {'opportunities': [{
-        'id': 'O01', 'title': 'Fixture only', 'thesis': 'A qualified test hypothesis.',
+        'id': 'O01', 'title': 'Fixture only', 'format': 'carousel', 'starting_point': 'xavor_experience', 'reader_value': 'A useful scoped lesson', 'thesis': 'A qualified test hypothesis.',
         'primary_reader': 'CTO', 'business_decision': 'Choose a deployment boundary.',
         'technical_decision': 'Evaluate hosted and local inference.',
         'alternatives': ['Local model with capacity constraints.', 'Hosted model with a different data boundary.'],
@@ -29,8 +29,8 @@ def fixture():
     baseline_name = '2-creative-brief.md'
     critique = {
         'reviews': [{'id': 'O01', 'decision': 'keep', 'scores': dict.fromkeys(op.DIMENSIONS, 3),
-                     'reason': 'Fixture judgment only.', 'required_changes': [],
-                     'evidence_checks': [{'index': i, 'status': 'supported', 'reason': 'Fixture scope check.'} for i in range(2)]}],
+                     'reason': 'Fixture judgment only.', 'required_changes': [], 'writer_notes': [],
+                     'evidence_checks': [{'index': i, 'status': 'supported', 'impact': 'context', 'reason': 'Fixture scope check.'} for i in range(2)]}],
         'baseline_comparison': {'assessment': 'Fixture comparison only.', 'observations': [{
             'baseline_file': baseline_name, 'quote': inputs['baseline']['files'][baseline_name][:40],
             'opportunity_ids': ['O01'], 'finding': 'Fixture difference.'}]},
@@ -47,7 +47,7 @@ class OpportunityTests(unittest.TestCase):
             lambda c: c['evidence'][0].update(ref='C9999'),
             lambda c: c['evidence'][0].update(quote='A fabricated supporting quotation.'),
             lambda c: c['evidence'][1].update(ref='invented-case'),
-            lambda c: c.update(evidence=c['evidence'][:1]),
+            lambda c: c.update(starting_point='external_signal', evidence=c['evidence'][1:]),
             lambda c: c.update(offering_ids=['plm-migration']),
             lambda c: c.update(calendar='Unrequested stage'),
         ]
@@ -64,8 +64,8 @@ class OpportunityTests(unittest.TestCase):
         candidates = op.validate_candidates(data, inputs)
         op.validate_critique(critique, candidates, inputs)
         changes = [
-            lambda r: r['evidence_checks'][0].update(status='unsupported'),
-            lambda r: r['evidence_checks'][0].update(status='qualified'),
+            lambda r: r['evidence_checks'][0].update(status='unsupported', impact='blocking'),
+            lambda r: r['evidence_checks'][0].update(status='qualified', impact='blocking'),
             lambda r: r['scores'].update(originality=2),
             lambda r: r['scores'].update(evidence=True),
             lambda r: r['required_changes'].append('Verify a claim.'),
@@ -77,8 +77,7 @@ class OpportunityTests(unittest.TestCase):
             with self.subTest(change=change), self.assertRaises(ValueError):
                 op.validate_critique(bad, candidates, inputs)
         candidates[0]['unknowns'] = ['Product availability']
-        with self.assertRaisesRegex(ValueError, 'prerequisites'):
-            op.validate_critique(critique, candidates, inputs)
+        op.validate_critique(critique, candidates, inputs)  # Unused context is not a blocker.
 
     def test_every_candidate_and_baseline_quote_checked(self):
         inputs, data, critique = fixture()
@@ -172,6 +171,42 @@ class OpportunityTests(unittest.TestCase):
                     op.main()
                 self.assertFalse(out.exists())
             call.assert_not_called()
+
+    def test_evergreen_case_and_editorial_origins_need_no_news(self):
+        inputs, data, _ = fixture()
+        candidate = data['opportunities'][0]
+        candidate.update(why_now='', technical_decision='', business_decision='', alternatives=[])
+        candidate['evidence'] = candidate['evidence'][1:]
+        op.validate_candidates(data, inputs)
+        record = inputs['editorial_inputs']['records'][1]
+        candidate.update(starting_point='buyer_question', evidence=[{
+            'kind': 'editorial', 'ref': record['id'], 'claim': 'User-described buying dynamics.',
+            'basis': 'source_report', 'quote': record['statement']}])
+        op.validate_candidates(data, inputs)
+
+    def test_keep_with_writer_note_and_open_context(self):
+        inputs, data, critique = fixture()
+        data['opportunities'][0]['unknowns'] = ['Client deployment requirements, not claimed in content.']
+        review = critique['reviews'][0]
+        review['evidence_checks'][0].update(status='qualified', impact='writer_note')
+        review['writer_notes'] = ['Correct the incidental digest date.']
+        op.validate_critique(critique, data['opportunities'], inputs)
+        self.assertIn('Writer notes:', op.render_review(data['opportunities'], critique, inputs))
+        review['evidence_checks'][0].update(impact='blocking')
+        with self.assertRaisesRegex(ValueError, 'blocking'):
+            op.validate_critique(critique, data['opportunities'], inputs)
+
+    def test_competitive_gap_requires_observation_and_inference(self):
+        inputs, data, _ = fixture()
+        candidate = data['opportunities'][0]
+        record = inputs['competitive_context']['records'][0]
+        candidate.update(starting_point='competitive_gap', evidence=[{
+            'kind': 'competitive', 'ref': record['id'], 'claim': 'Possible differentiation hypothesis.',
+            'basis': 'inference', 'quote': record['statement']}])
+        op.validate_candidates(data, inputs)
+        candidate['evidence'][0]['basis'] = 'source_report'
+        with self.assertRaisesRegex(ValueError, 'inference'):
+            op.validate_candidates(data, inputs)
 
     def test_duplicate_keys_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Duplicate JSON'):

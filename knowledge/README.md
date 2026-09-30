@@ -49,3 +49,12 @@ The opt-in `opportunities.py` runner loads these files. The production `run.py`
 pipeline does not. Sentinel, production prompts,
 scheduled generation, and the v1 baseline are unchanged. Future v2 stages should
 validate references and consume scope and restrictions alongside each claim.
+
+## Additional starting points
+
+[editorial-inputs.yml](editorial-inputs.yml) records confirmed commercial/buyer
+context and explicitly inferred case questions. [competitive-context.yml](competitive-context.yml)
+contains a small public sample of messaging and presentation, with source and
+access limits. It is not a representative competitor audit. Direct competitors
+still need confirmation; specialist perspectives and cross-account buyer
+questions remain uncollected. These gaps must not be filled with invented quotes.

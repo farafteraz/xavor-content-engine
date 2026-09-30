@@ -1,0 +1,60 @@
+schema_version: 1
+purpose: Starting points beyond news; questions and interpretations are not verified customer findings.
+records:
+  - id: commercial-specialist-services
+    category: commercial_direction
+    status: user_confirmed
+    source_ref: strategy/marketing-strategy.yml
+    offer_refs: [nvidia-physical-ai, plm-migration, salesforce-managed-services, servicenow-implementation]
+    statement: Platform and specialist services are the usual commercial priorities, with no ranking within the group.
+    use: Start with a worthwhile argument about these services; a vendor announcement is optional.
+  - id: buyer-business-and-technical
+    category: buyer_context
+    status: user_confirmed
+    source_ref: strategy/marketing-strategy.yml
+    offer_refs: [ai-use-case-development, workflow-automation, data-engineering, business-intelligence, plm-migration, servicenow-implementation, salesforce-managed-services, nvidia-physical-ai]
+    statement: Business leadership owns needs and outcomes; technical leadership typically evaluates solutions, decides, and implements. Either can initiate the conversation.
+    use: Choose a primary reader and an insight worth their attention. Do not force both roles into every piece.
+  - id: data-two-commercial-roles
+    category: commercial_direction
+    status: user_confirmed
+    source_ref: knowledge/offers.yml
+    offer_refs: [data-engineering, business-intelligence]
+    statement: Data engineering and BI are standalone services as well as supporting capabilities for AI engagements.
+    use: Consider analytics and operational reporting arguments on their own merits, without attaching AI to each one.
+  - id: partner-access-during-migration
+    category: experience_question
+    status: editorial_inference
+    source_ref: aras-partner-access
+    offer_refs: [plm-migration]
+    statement: A possible editorial question is how partner access requirements shape the migration scope before cutover.
+    use: Investigate using the scoped Aras case. This is a proposed question, not a measured recurring customer problem.
+  - id: workflow-control-after-approval
+    category: experience_question
+    status: editorial_inference
+    source_ref: servicenow-vendor-access
+    offer_refs: [servicenow-implementation, workflow-automation]
+    statement: A possible editorial question is what happens after an access request is approved, including ownership of renewal and removal.
+    use: Draw on the documented workflow. Avoid implying the case proves automated downstream revocation or agent governance.
+  - id: reporting-trust-and-definitions
+    category: experience_question
+    status: editorial_inference
+    source_ref: real-estate-data-governance
+    offer_refs: [data-engineering, business-intelligence]
+    statement: A possible editorial question is why customer matching and data definitions affect whether business users can rely on reporting.
+    use: Explore the experience as a standalone data and BI angle; do not turn one case into a universal claim.
+  - id: private-ai-operating-requirements
+    category: experience_question
+    status: editorial_inference
+    source_ref: private-supply-chain-knowledge
+    offer_refs: [ai-use-case-development, chatbots]
+    statement: A possible editorial question is how concurrency requirements can change a private AI architecture after an initial implementation.
+    use: Use the phased case within its documented scope; product availability is irrelevant unless the piece promotes that product.
+gaps:
+  specialist_perspectives: No separately attributed engineer or practice-lead observations have been collected.
+  recurring_buyer_questions: No validated cross-account question or objection inventory has been collected.
+  published_history: Unknown; generated content is not proof of publication.
+policy: >-
+  These records open possible lines of inquiry. They are not campaign quotas,
+  mandatory themes, or evidence of market prevalence. User strategy controls
+  commercial direction. Private discovery notes remain excluded.

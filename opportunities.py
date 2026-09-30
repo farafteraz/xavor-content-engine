@@ -65,6 +65,14 @@ def load_inputs(corpus, month, baseline):
     for offer in offers['offerings']:
         require(set(offer['capability_refs']) <= set(capabilities), 'Unknown capability reference')
         require(set(offer['proof_refs'] + offer['related_proof_refs']) <= set(cases), 'Unknown case reference')
+    editorial = read_yaml(ROOT / 'knowledge/editorial-inputs.yml')
+    for record in indexed(editorial['records']).values():
+        require(set(record['offer_refs']) <= offer_ids, 'Unknown editorial offering')
+        require(record['source_ref'] in cases or record['source_ref'] in ('strategy/marketing-strategy.yml', 'knowledge/offers.yml'), 'Unknown editorial provenance')
+    competitive = read_yaml(ROOT / 'knowledge/competitive-context.yml')
+    for record in indexed(competitive['records']).values():
+        require(set(record['offer_refs']) <= offer_ids, 'Unknown competitive offering')
+        require(record['source_url'].startswith('https://'), 'Competitive example needs a source URL')
     text = corpus.read_text()
     require(text.strip(), 'Corpus is empty')
     # Paragraph IDs preserve original wording without an LLM-generated evidence summary.
@@ -74,7 +82,7 @@ def load_inputs(corpus, month, baseline):
                 'posts/07-video-feature.md', 'posts/11-static.md']
     baseline_files = {name: (baseline / name).read_text() for name in expected}
     return {
-        'month': month, 'strategy': strategy, 'offers': offers, 'proof': proof,
+        'month': month, 'strategy': strategy, 'offers': offers, 'proof': proof, 'editorial_inputs': editorial, 'competitive_context': competitive,
         'corpus': chunks, 'corpus_sha256': hashlib.sha256(corpus.read_bytes()).hexdigest(),
         'history': {'status': 'unknown', 'note': 'Generated v1 outputs are not confirmed published history.'},
         'baseline': {'status': 'generated_control_sample_not_publication_history', 'files': baseline_files},
@@ -117,43 +125,51 @@ def validate_candidates(data, inputs):
     offers = indexed(inputs['offers']['offerings'])
     cases = indexed(inputs['proof']['cases'])
     capabilities = indexed(inputs['proof']['capabilities'])
-    text_fields = ['id', 'title', 'thesis', 'primary_reader', 'business_decision', 'technical_decision',
-                   'why_now', 'why_xavor', 'next_step']
+    text_fields = ['id', 'title', 'thesis', 'primary_reader',
+                   'why_xavor', 'next_step', 'reader_value', 'format', 'starting_point']
     for candidate in candidates:
-        fields(candidate, text_fields + ['alternatives', 'offering_ids', 'evidence', 'unknowns'], 'Opportunity')
+        fields(candidate, text_fields + ['alternatives', 'offering_ids', 'evidence', 'unknowns', 'why_now', 'business_decision', 'technical_decision'], 'Opportunity')
         for key in text_fields:
             string(candidate[key], key)
+        require(candidate['format'] in ('carousel', 'case-study-carousel', 'explainer-reel', 'video-feature', 'article', 'static'), 'Unknown format')
+        require(candidate['starting_point'] in ('commercial_priority', 'buyer_question', 'xavor_experience', 'external_signal', 'competitive_gap'), 'Unknown starting point')
+        require(isinstance(candidate['why_now'], str), 'why_now must be text; empty for evergreen')
         require(re.fullmatch(r'O\d{2}', candidate['id']), 'Opportunity ID must be O01, O02, etc.')
         require(candidate['id'] not in ids, 'Duplicate opportunity ID')
         ids.add(candidate['id'])
         for key in ['alternatives', 'offering_ids', 'unknowns']:
-            strings(candidate[key], key, allow_empty=(key == 'unknowns'))
-        require(len(candidate['alternatives']) >= 2, 'Compare at least two approaches')
+            strings(candidate[key], key, allow_empty=(key in ('unknowns', 'alternatives')))
+        for key in ('business_decision', 'technical_decision'):
+            require(isinstance(candidate[key], str), f'{key} must be text; empty when irrelevant')
         require(set(candidate['offering_ids']) <= set(offers), 'Unknown opportunity offering')
         evidence = candidate['evidence']
         require(isinstance(evidence, list) and evidence, 'Evidence is required')
         kinds = set()
         for item in evidence:
             fields(item, ['kind', 'ref', 'claim', 'basis', 'quote'], 'Evidence')
-            require(item['kind'] in ('corpus', 'case', 'capability'), 'Unknown evidence kind')
+            require(item['kind'] in ('corpus', 'case', 'capability', 'editorial', 'competitive'), 'Unknown evidence kind')
             require(item['basis'] in ('source_report', 'inference'), 'Label reports versus inference')
             string(item['claim'], 'Evidence claim')
             string(item['ref'], 'Evidence reference')
             string(item['quote'], 'Evidence quote')
             kinds.add(item['kind'])
+            if item['kind'] == 'competitive':
+                require(item['basis'] == 'inference', 'Competitive reasoning must be labeled inference')
             if item['kind'] == 'corpus':
                 require(item['ref'] in inputs['corpus'], 'Unknown corpus reference')
                 source = inputs['corpus'][item['ref']]
             else:
-                collection = cases if item['kind'] == 'case' else capabilities
+                collection = cases if item['kind'] == 'case' else indexed(inputs['editorial_inputs']['records']) if item['kind'] == 'editorial' else indexed(inputs['competitive_context']['records']) if item['kind'] == 'competitive' else capabilities
                 require(item['ref'] in collection, 'Unknown library reference')
                 record = collection[item['ref']]
                 source = json.dumps(record, ensure_ascii=False)
                 linked = record['offer_refs'] + record.get('related_offer_refs', [])
                 require(set(candidate['offering_ids']) & set(linked), 'Evidence unrelated to selected offerings')
             require(len(item['quote']) >= 15 and item['quote'] in source, 'Evidence quote must match its source')
-        require('corpus' in kinds and bool(kinds & {'case', 'capability'}),
-                'Each opportunity needs a corpus signal and Xavor evidence')
+        if candidate['starting_point'] == 'competitive_gap':
+            require('competitive' in kinds, 'A competitive-gap opportunity must cite an observed example')
+        if candidate['starting_point'] == 'external_signal':
+            require('corpus' in kinds, 'An external-signal opportunity must cite its signal')
     return candidates
 
 
@@ -164,12 +180,13 @@ def validate_critique(data, candidates, inputs):
     by_id = {x['id']: x for x in candidates}
     seen = set()
     for review in data['reviews']:
-        fields(review, ['id', 'decision', 'scores', 'reason', 'required_changes', 'evidence_checks'], 'Review')
+        fields(review, ['id', 'decision', 'scores', 'reason', 'required_changes', 'writer_notes', 'evidence_checks'], 'Review')
         require(review['id'] in by_id and review['id'] not in seen, 'Unknown or duplicate review ID')
         seen.add(review['id'])
         require(review['decision'] in ('keep', 'revise', 'reject'), 'Unknown critic decision')
         string(review['reason'], 'Review reason')
         strings(review['required_changes'], 'Required changes', allow_empty=True)
+        strings(review['writer_notes'], 'Writer notes', allow_empty=True)
         fields(review['scores'], DIMENSIONS, 'Scores')
         require(all(type(v) is int and 1 <= v <= 5 for v in review['scores'].values()), 'Scores must be integers 1–5')
         evidence = by_id[review['id']]['evidence']
@@ -177,16 +194,19 @@ def validate_critique(data, candidates, inputs):
         require(isinstance(checks, list) and len(checks) == len(evidence), 'Review every evidence item')
         indices = set()
         for check in checks:
-            fields(check, ['index', 'status', 'reason'], 'Evidence check')
+            fields(check, ['index', 'status', 'impact', 'reason'], 'Evidence check')
             require(type(check['index']) is int and 0 <= check['index'] < len(evidence), 'Invalid evidence index')
             require(check['index'] not in indices, 'Duplicate evidence check')
             indices.add(check['index'])
             require(check['status'] in ('supported', 'qualified', 'unsupported'), 'Invalid evidence status')
+            require(check['impact'] in ('blocking', 'writer_note', 'context'), 'Unknown evidence impact')
+            require(check['status'] != 'unsupported' or check['impact'] != 'context', 'Unsupported claims need blocking or writer action')
+            if check['impact'] == 'writer_note':
+                require(review['writer_notes'], 'Writer action must be recorded')
             string(check['reason'], 'Evidence-check reason')
         if review['decision'] == 'keep':
-            require(all(x['status'] == 'supported' for x in checks), 'Cannot keep unresolved evidence')
+            require(all(x['impact'] != 'blocking' for x in checks), 'Cannot keep blocking evidence')
             require(not review['required_changes'], 'Cannot keep required changes')
-            require(not by_id[review['id']]['unknowns'], 'Cannot keep unresolved factual prerequisites')
             require(min(review['scores'].values()) >= 3, 'Cannot keep a failing dimension')
         else:
             require(review['required_changes'], 'Explain remediation or reason to abandon')
@@ -225,27 +245,37 @@ def render_review(candidates, critique, inputs):
         for item in selected:
             review = reviews[item['id']]
             lines += [f"### {item['id']}: {item['title']}", '', item['thesis'], '',
-                      f"Primary reader: {item['primary_reader']}", '',
-                      f"Business decision: {item['business_decision']}", '',
-                      f"Technical decision: {item['technical_decision']}", '',
-                      'Approaches to evaluate: ' + '; '.join(item['alternatives']), '',
-                      f"Why now: {item['why_now']}", '', f"Xavor connection: {item['why_xavor']}", '',
-                      f"Critic: {review['reason']}", '',
-                      'Scores (1–5): ' + ', '.join(f'{k}: {v}' for k, v in review['scores'].items()), '',
-                      'Evidence:', '']
+                      f"Format: {item['format']}. Reader: {item['primary_reader']}.", '',
+                      f"Reader value: {item['reader_value']}", '',
+                      f"Xavor connection: {item['why_xavor']}", '',
+                      f"Review: {review['reason']}", '',
+                      'Blocking changes: ' + ('; '.join(review['required_changes']) or 'None.'), '',
+                      'Writer notes: ' + ('; '.join(review['writer_notes']) or 'None.'), '',
+                      '<details><summary>Evidence and planning context</summary>', '',
+                      f"Starting point: {item['starting_point']}", '']
+            for key in ('business_decision', 'technical_decision', 'why_now'):
+                if item[key]:
+                    lines += [key.replace('_', ' ').capitalize() + ': ' + item[key], '']
+            if item['alternatives']:
+                lines += ['Approaches: ' + '; '.join(item['alternatives']), '']
             checks = {x['index']: x for x in review['evidence_checks']}
             for index, evidence in enumerate(item['evidence']):
                 ref = evidence['ref']
                 if evidence['kind'] == 'corpus':
                     link = f'[{ref}](corpus.md#{ref.lower()})'
+                elif evidence['kind'] == 'competitive':
+                    record = indexed(inputs['competitive_context']['records'])[ref]
+                    link = f"[{ref}]({record['source_url']})"
+                elif evidence['kind'] == 'editorial':
+                    link = f'[{ref}](inputs.json)'
                 else:
                     record = (cases if evidence['kind'] == 'case' else caps)[ref]
                     link = f"[{ref}]({record['source_url']})"
                 check = checks[index]
                 lines += [f"- {link} ({evidence['basis']}, {check['status']}): {evidence['claim']} {check['reason']}"]
-            lines += ['', 'Unresolved prerequisites: ' + ('; '.join(item['unknowns']) or 'None identified by the generator.'), '',
-                      'Required changes: ' + ('; '.join(review['required_changes']) or 'None identified by the critic.'), '',
-                      f"Proposed next step: {item['next_step']}", '']
+            if item['unknowns']:
+                lines += ['', 'Open context (not automatic blockers): ' + '; '.join(item['unknowns'])]
+            lines += ['', f"Proposed next step: {item['next_step']}", '', '</details>', '']
     comparison = critique['baseline_comparison']
     lines += ['## Comparison with v1', '', comparison['assessment'], '']
     for item in comparison['observations']:
@@ -267,7 +297,7 @@ def prepare_output(path):
 
 
 def execute(inputs, out, router=None):
-    manifest = {'schema_version': 1, 'status': 'prepared', 'month': inputs['month'],
+    manifest = {'schema_version': 2, 'status': 'prepared', 'month': inputs['month'],
                 'created_at': datetime.now(timezone.utc).isoformat(), 'corpus_sha256': inputs['corpus_sha256'],
                 'history_status': 'unknown', 'human_approval': None,
                 'routes': {k: list(v) for k, v in router.routes.items() if k in ('strategy', 'editor')} if router else None}

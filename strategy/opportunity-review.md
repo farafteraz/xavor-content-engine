@@ -13,9 +13,11 @@ original August corpus. The corpus must match `output/2026-08/0-corpus.md` byte
 for byte. This milestone supports August only so a different month's inputs
 cannot be mistaken for the agreed comparison.
 
-The strategy role proposes up to eight opportunities, each with a business
-and technical decision, competing approaches, a Xavor connection, evidence,
-and unresolved prerequisites. It does not see the baseline. The editor role
+The strategy role proposes up to eight format-aware opportunities, each with a
+reader benefit, a Xavor connection, and support for the claims it actually makes.
+Commercial direction, buyer questions, experience, competitive observations, and
+external signals are separate starting points. Business/technical comparisons
+and news hooks are optional. It does not see the baseline. The editor role
 then independently reviews the original sources and every candidate. It can
 recommend, request revision, or reject all candidates. Its comparison with v1
 must cite actual excerpts from the preserved briefs, calendar, or five posts.
@@ -98,15 +100,17 @@ model's argument. The critic evaluates scope and reasoning, but remains a model
 judgment. Human review and source verification remain necessary before publication.
 
 Keep decisions require all five editorial dimensions to score at least 3 of 5,
-all evidence checks to be supported, and no unresolved factual prerequisites or
-required changes. These thresholds are implementation defaults, not measured
+no blocking evidence issues and no required changes. Writer notes, qualified
+evidence that can be narrowly worded, and unused client-specific context do not
+block a viable idea. Unsupported central claims still block; removable peripheral
+claims need explicit writer instructions. These thresholds are implementation defaults, not measured
 performance or user-confirmed campaign policy. Rejected ideas remain visible.
 
 Publication history is unknown. The control sample is generated v1 work, not a
 record of what was published. Novelty can be assessed against that sample and
 within the candidate set only. The critic cannot prove improved finished-post
-quality because this stage produces no finished posts. No content-history
-claims or invented market facts fill those gaps.
+quality because this stage produces no finished posts. No content-history claims or invented market facts fill those gaps. The initial
+competitive sample contains access-limited public examples, not complete history.
 
 ## Validation
 
@@ -119,3 +123,22 @@ recommendations, all-rejected outcomes, output protection, partial failures,
 credential selection, and the review stop with simulated model responses.
 The existing v1 and hybrid pipeline regression tests also run. Passing these
 checks demonstrates workflow behavior, not live model access or content quality.
+
+## Input and review revision, September 30
+
+`knowledge/editorial-inputs.yml` separates confirmed commercial/buyer context
+from case-derived editorial questions. `knowledge/competitive-context.yml`
+records a small, provisional public sample and its limits. These are loaded in
+both model stages. The generator can support an evergreen idea without citing
+a Sentinel paragraph. A competitive-gap hypothesis must cite an observed example.
+
+The revised review distinguishes blocking problems, writer notes, and context.
+The human report keeps the argument and editorial decision visible, with evidence
+and optional planning details in expandable sections. Numeric scores remain
+diagnostic model judgments, not the main review interface.
+
+Schema version 2 adds format, reader value, starting point, writer notes, and
+evidence impact. The archived first Claude run remains unchanged and uses the
+older schema. No new live quality comparison has yet validated these changes.
+The CLI is still the August controlled-comparison runner; October planning needs
+a separately configured September research input, not relabeled August data.
