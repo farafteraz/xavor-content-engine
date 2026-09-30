@@ -63,7 +63,12 @@ to take reviewed opportunities further.
 The `V2 opportunity review` GitHub workflow runs offline tests and prepares
 inputs on relevant branch pushes. Its manual `generate` option defaults to
 false. Enabling it calls the two funded model roles and uploads the results as
-an artifact. The workflow has read-only repository permissions and commits
+an artifact. The manual provider selector defaults to Claude (`anthropic`),
+using the existing Anthropic secret for both roles. Select `openai` to compare
+with the OpenAI configuration when funded. The local command retains its
+existing hybrid defaults; use `STRATEGY_PROVIDER=anthropic`,
+`EDITOR_PROVIDER=anthropic`, `STRATEGY_MODEL=claude-opus-4-8`, and
+`EDITOR_MODEL=claude-opus-4-8` for the equivalent local Claude run. The workflow has read-only repository permissions and commits
 nothing. Artifacts expire after 14 days.
 
 ## Artifacts
