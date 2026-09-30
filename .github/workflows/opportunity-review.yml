@@ -17,6 +17,11 @@ on:
         description: Generate and critique August opportunities using funded API access
         type: boolean
         default: false
+      provider:
+        description: Provider for both opportunity generation and critique
+        type: choice
+        options: [anthropic, openai]
+        default: anthropic
 permissions:
   contents: read
 jobs:
@@ -37,6 +42,11 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.generate
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          STRATEGY_PROVIDER: ${{ inputs.provider }}
+          EDITOR_PROVIDER: ${{ inputs.provider }}
+          STRATEGY_MODEL: ${{ inputs.provider == 'anthropic' && 'claude-opus-4-8' || 'gpt-5.6-sol' }}
+          EDITOR_MODEL: ${{ inputs.provider == 'anthropic' && 'claude-opus-4-8' || 'gpt-5.6-sol' }}
           STRATEGY_REASONING_EFFORT: medium
         run: python opportunities.py --month 2026-08 --corpus output/2026-08/0-corpus.md --output-dir work/august-review
       - uses: actions/upload-artifact@v4
