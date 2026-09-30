@@ -1,0 +1,305 @@
+{
+  "opportunities": [
+    {
+      "id": "O01",
+      "title": "Deploying agents that act inside enterprise systems without losing audit control",
+      "thesis": "For a 50 to 1,000 employee firm already running ServiceNow, the decision that determines whether agentic automation is safe is where governed execution lives, and open agent runtimes reaching a governed action layer changes that architecture choice more than any model selection.",
+      "primary_reader": "CIO or VP of IT operations who owns a ServiceNow instance and is being asked to allow AI agents to trigger real workflows",
+      "business_decision": "Whether to let external or internally built agents execute business actions, and under what oversight, before agent proliferation outpaces the ability to track who approved what",
+      "technical_decision": "Route agent actions through a governed system of action with identity verification and audit trails versus letting each agent hold its own credentials and act directly against systems, which trades speed for traceability and revocation control",
+      "alternatives": [
+        "Centralize execution through a governed workflow layer so every agent action is logged and approvals enforced, at the cost of building and configuring that layer before agents can act",
+        "Let agents integrate point-to-point with target systems for faster delivery, accepting weaker central audit and harder incident response when an agent misbehaves"
+      ],
+      "why_now": "The July 26 to August 2 digest reports ServiceNow AI Control Tower GA expected August 2026 with an MCP Server that lets agents built on other stacks trigger governed workflows, making the governed-execution decision live this month rather than theoretical",
+      "why_xavor": "Xavor has a cataloged ServiceNow implementation and workflow capability and a reported governed vendor-access workflow build, which supports advising on intake, approvals, and expiry oversight, though it does not establish delivered agent-governance projects",
+      "offering_ids": [
+        "servicenow-implementation",
+        "workflow-automation"
+      ],
+      "evidence": [
+        {
+          "kind": "corpus",
+          "ref": "C0199",
+          "claim": "The July 26 to August 2 digest reports ServiceNow AI Control Tower GA is expected in August 2026 with governed, auditable execution and an MCP Server open to any agent runtime",
+          "basis": "source_report",
+          "quote": "general availability is expected in August 2026"
+        },
+        {
+          "kind": "corpus",
+          "ref": "C0199",
+          "claim": "The digest reports the platform offers identity-verified, fully auditable governed execution",
+          "quote": "identity-verified and fully auditable",
+          "basis": "source_report"
+        },
+        {
+          "kind": "case",
+          "ref": "servicenow-vendor-access",
+          "claim": "Xavor reports implementing a governed vendor-access workflow with intake, sequenced approvals, and an access register within ServiceNow",
+          "basis": "source_report",
+          "quote": "a dedicated access register, renewal reminders, and removal tasks"
+        }
+      ],
+      "unknowns": [
+        "Whether Xavor has delivered any AI Control Tower or agent-governance configuration",
+        "Which regulatory obligations apply to the specific client's agent actions"
+      ],
+      "next_step": "A working session to inventory current and planned agents and map where their actions should route through governed execution"
+    },
+    {
+      "id": "O02",
+      "title": "Whether unattributed AI and GPU spend belongs in your next cloud engagement scope",
+      "thesis": "For a mid-sized firm whose AI workloads reopened cloud cost problems, the decision that determines financial control is building cost attribution into the workload architecture from the start rather than adding reporting afterward, because agentic call chains break traditional attribution.",
+      "primary_reader": "VP of Engineering or Cloud Architect accountable for a cloud budget that AI workloads are now exceeding",
+      "business_decision": "Whether to fund cost-attribution engineering as part of AI and cloud work, and who owns spend when a single request fans out across many model and tool calls",
+      "technical_decision": "Instrument tagging, model routing governance, and per-team attribution at design time versus relying on native or third-party cost tools that report at an aggregated tenant level, which leaves the true cost driver buried in the agent graph",
+      "alternatives": [
+        "Design attribution into pipelines and tagging schemas up front, which requires engineering effort before value is visible but yields per-team and per-feature unit economics",
+        "Depend on platform-native cost dashboards, which is faster to adopt but reportedly does not deliver granular token and GPU attribution at scale"
+      ],
+      "why_now": "The July 26 to August 2 digest reports the 2026 State of FinOps found 98% of FinOps teams now manage AI spend and that granular AI spend monitoring is the top unmet capability, making attribution a current design decision for August engagements",
+      "why_xavor": "Xavor advertises data pipelines, transformation, and modeling and reports combining data-quality engineering with analytics delivery, which supports building attribution models and dashboards, though cost-governance tooling is not itself a cataloged delivered result",
+      "offering_ids": [
+        "data-engineering",
+        "cloud"
+      ],
+      "evidence": [
+        {
+          "kind": "corpus",
+          "ref": "C0206",
+          "claim": "The digest reports the 2026 State of FinOps found 98% of FinOps teams manage AI spend and that granular AI spend monitoring is the most-requested unmet capability",
+          "basis": "source_report",
+          "quote": "98% of FinOps teams now manage AI spend"
+        },
+        {
+          "kind": "corpus",
+          "ref": "C0206",
+          "claim": "The digest reports commercial tooling has not delivered granular AI spend monitoring at scale",
+          "basis": "source_report",
+          "quote": "commercial tooling has not delivered this at scale"
+        },
+        {
+          "kind": "case",
+          "ref": "real-estate-data-governance",
+          "claim": "Xavor reports combining data-quality engineering with analytics delivery using Power BI models and dashboards",
+          "basis": "source_report",
+          "quote": "Purview quality rules, Athena scans, Python customer matching, and Power BI models and dashboards"
+        }
+      ],
+      "unknowns": [
+        "Whether Xavor has delivered a cost-attribution or FinOps engagement",
+        "Client cloud provider mix and current tagging maturity"
+      ],
+      "next_step": "A discovery conversation to assess current cost visibility and where attribution would need to be instrumented"
+    },
+    {
+      "id": "O03",
+      "title": "Grounding agents in a semantic and governed data layer before scaling them",
+      "thesis": "For a data leader whose agentic pilots underperform, the decision that most changes accuracy and cost is investing in a semantic and governed data foundation, because agent reliability is constrained by data readiness more than model choice.",
+      "primary_reader": "CDO or VP of Data deciding whether to expand agent deployments or first fix the data layer beneath them",
+      "business_decision": "Whether to prioritize a data-quality and semantic foundation over broader agent rollout, given that unreliable results erode trust and inflate cost",
+      "technical_decision": "Build a unified semantic layer, quality rules, and observability versus expanding agents against fragmented data, which trades slower initial rollout for lower hallucination risk and clearer attribution",
+      "alternatives": [
+        "Establish semantic models and governance first, delaying visible agent features but improving accuracy and repeatability",
+        "Scale agents on existing data and remediate quality reactively, which ships faster but risks unreliable results and rework"
+      ],
+      "why_now": "The July 26 to August 2 digest reports Gartner's position that unified semantics can raise agent accuracy and cut agentic costs, and that data quality management has overtaken AI initiatives as the top data-leader concern, making the foundation-first choice timely for August planning",
+      "why_xavor": "Xavor advertises data pipelines, transformation, modeling, and governance including foundations for AI, and reports delivering data-quality engineering with analytics, which supports a data-readiness role while keeping the standalone data role intact",
+      "offering_ids": [
+        "data-engineering",
+        "business-intelligence"
+      ],
+      "evidence": [
+        {
+          "kind": "corpus",
+          "ref": "C0208",
+          "claim": "The digest reports Gartner's position that without unified semantics agents are more likely to hallucinate and produce unreliable results",
+          "basis": "source_report",
+          "quote": "are far more likely to hallucinate, introduce bias and produce unreliable results"
+        },
+        {
+          "kind": "corpus",
+          "ref": "C0229",
+          "claim": "The digest reports a benchmark study finding data quality management has overtaken AI initiatives as the top CDO concern",
+          "basis": "source_report",
+          "quote": "data quality management has overtaken AI initiatives as the top CDO concern"
+        },
+        {
+          "kind": "capability",
+          "ref": "data-and-bi-services",
+          "claim": "Xavor advertises data pipelines, transformation, modeling, and governance including foundations for AI",
+          "basis": "source_report",
+          "quote": "modeling, governance, and Power BI or Tableau reporting, including foundations for AI"
+        }
+      ],
+      "unknowns": [
+        "Client's current semantic layer and catalog maturity",
+        "Which data domains the agents would query"
+      ],
+      "next_step": "A data-readiness assessment discussion covering semantic modeling and governance coverage for planned agents"
+    },
+    {
+      "id": "O04",
+      "title": "Choosing an architecture for private, retrieval-based AI on sensitive documents",
+      "thesis": "For a regulated mid-sized firm needing controlled AI access to sensitive documents, the consequential choice is between a self-managed local inference path and a managed cloud model service, and that choice is driven by concurrency and performance needs as much as by data control.",
+      "primary_reader": "CTO or VP of Engineering in a regulated environment who owns controlled handling of sensitive operational or clinical documentation",
+      "business_decision": "How to give staff AI access to sensitive content without exposing data, while meeting real concurrency and performance requirements",
+      "technical_decision": "Run local or self-hosted inference for tighter data control versus adopting a managed cloud model service that addresses concurrency and performance, which trades some control for scalability",
+      "alternatives": [
+        "Local or on-premises inference for maximum data-path control, at the cost of scaling and concurrency limits",
+        "A managed cloud model service that eases concurrency and performance, accepting a cloud data path that must be governed"
+      ],
+      "why_now": "The July 26 to August 2 digest reports OCI added private endpoints and version-pinnable guardrails for regulated production AI, and the same period frames EU transparency and governance obligations, making the private-versus-managed architecture decision current for August",
+      "why_xavor": "Xavor reports a phased private knowledge-platform implementation that moved from a local approach to a managed cloud model service as scaling requirements emerged, which is direct experience with exactly this tradeoff, though it does not prove the named Enterprise Knowledge Agent product",
+      "offering_ids": [
+        "ai-use-case-development",
+        "chatbots"
+      ],
+      "evidence": [
+        {
+          "kind": "corpus",
+          "ref": "C0081",
+          "claim": "The July 12 to 19 digest reports OCI added private endpoints and version-pinnable guardrails for regulated production AI",
+          "basis": "source_report",
+          "quote": "private endpoints for imported models, enabling production AI workloads that require private connectivity"
+        },
+        {
+          "kind": "case",
+          "ref": "private-supply-chain-knowledge",
+          "claim": "Xavor reports a phased knowledge-platform implementation that changed architecture from a local approach to a managed cloud model service as scaling needs emerged",
+          "basis": "source_report",
+          "quote": "Initial PrivateGPT/Ollama implementation followed by AWS Bedrock to address concurrency and performance constraints"
+        }
+      ],
+      "unknowns": [
+        "The final hosting boundary of the referenced implementation is unclear",
+        "Which specific regulatory requirements apply to the client's documents",
+        "No verified availability of the named Enterprise Knowledge Agent product"
+      ],
+      "next_step": "An architecture discussion weighing local versus managed inference against the client's concurrency, performance, and data-boundary requirements"
+    },
+    {
+      "id": "O05",
+      "title": "Instrumenting outcomes before adopting outcome-based agent pricing",
+      "thesis": "For a Salesforce-using service organization, the decision that determines whether pay-per-resolution AI pays off is investing in resolution-rate instrumentation and knowledge quality, because outcome pricing only rewards the org that can measure and improve resolutions.",
+      "primary_reader": "VP of Service Operations or a Salesforce-owning IT leader evaluating an autonomous help agent",
+      "business_decision": "Whether outcome-based pricing lowers procurement risk enough to deploy, and what must be instrumented so the charged resolutions are genuine wins",
+      "technical_decision": "Invest in knowledge-base quality, action libraries, and outcome instrumentation before deployment versus enabling the agent quickly and measuring later, which trades speed for confidence that resolution counts reflect value",
+      "alternatives": [
+        "Prepare knowledge, actions, and outcome analytics first, delaying go-live but making the resolution metric trustworthy",
+        "Deploy quickly on default configuration and tune afterward, which reaches production sooner but risks paying for weak resolutions"
+      ],
+      "why_now": "The July 26 to August 2 digest reports the pay-per-resolution model reached GA at a flat rate per autonomous resolution and that service-agent adoption rose from 39% to 66% in a year, making instrumentation a live August decision",
+      "why_xavor": "Xavor reports integrating specialist retail-support agents with Salesforce workflows and product data, which supports agent integration and workflow experience, though this is adjacent evidence and not proof of a managed-service contract or the named recommendation product",
+      "offering_ids": [
+        "workflow-automation",
+        "chatbots"
+      ],
+      "evidence": [
+        {
+          "kind": "corpus",
+          "ref": "C0197",
+          "claim": "The July 26 to August 2 digest reports pay-per-resolution became GA at a flat two dollars per autonomously resolved issue",
+          "basis": "source_report",
+          "quote": "a flat **$2 per autonomously resolved issue**"
+        },
+        {
+          "kind": "corpus",
+          "ref": "C0197",
+          "claim": "The digest reports service-agent adoption grew from 39% in 2025 to 66% in 2026",
+          "basis": "source_report",
+          "quote": "grown from **39% in 2025 to 66% in 2026**"
+        },
+        {
+          "kind": "case",
+          "ref": "retail-salesforce-agents",
+          "claim": "Xavor reports integrating specialist retail-support agents with Salesforce and product data",
+          "basis": "source_report",
+          "quote": "integrating specialist retail-support agents with Salesforce and product data"
+        }
+      ],
+      "unknowns": [
+        "Whether Xavor holds current Salesforce delivery certifications for this work",
+        "No verified ongoing Salesforce managed-service contract in the library"
+      ],
+      "next_step": "A scoping discussion on knowledge and action readiness and the outcome analytics needed before enabling an autonomous help agent"
+    },
+    {
+      "id": "O06",
+      "title": "Building the integration layer that lets physical AI reach production in manufacturing",
+      "thesis": "For a mid-sized manufacturer facing board questions about humanoid and physical AI, the decision that matters is preparing the edge, perception, and integration layer, because deployment success depends on system integration that robot vendors do not supply.",
+      "primary_reader": "VP of Engineering or Manufacturing Operations at an industrial firm evaluating physical AI readiness",
+      "business_decision": "Whether to invest now in the edge and integration foundation for physical AI, ahead of procurement conversations, or wait until a specific robot deployment forces it",
+      "technical_decision": "Combine edge perception, navigation, and integration with existing systems, deciding what processing runs at the edge versus in the cloud, which affects latency, reliability, and data handling",
+      "alternatives": [
+        "Build edge-heavy perception and control for lower latency and local resilience, at higher on-site engineering cost",
+        "Lean on cloud services for perception and conversation components, which simplifies edge hardware but adds dependence on connectivity and cloud data paths"
+      ],
+      "why_now": "The July 26 to August 2 digest reports the BMW Figure 03 deployment crossing into production logistics sequencing and a 1,000-unit production milestone, signaling physical AI has moved past demonstration for August board conversations",
+      "why_xavor": "Xavor reports building and testing a companion robot combining edge perception, navigation, and conversational AI on NVIDIA hardware with cloud speech services, which is direct integration experience, though controlled testing does not establish production deployment or safety certification",
+      "offering_ids": [
+        "nvidia-physical-ai"
+      ],
+      "evidence": [
+        {
+          "kind": "corpus",
+          "ref": "C0211",
+          "claim": "The July 26 to August 2 digest reports BMW is deploying Figure 03 to automate production logistics sequencing and that a 1,000th unit was manufactured",
+          "basis": "source_report",
+          "quote": "complex sequencing tasks in production logistics"
+        },
+        {
+          "kind": "case",
+          "ref": "companion-robot",
+          "claim": "Xavor reports building and testing a companion robot combining edge perception, navigation, and conversational AI with cloud speech services",
+          "basis": "source_report",
+          "quote": "NVIDIA Jetson Orin, computer vision, ROS navigation, and conversational components with cloud speech services"
+        }
+      ],
+      "unknowns": [
+        "Xavor's reported robotics work is controlled testing, not production manufacturing deployment",
+        "MES and OT integration experience is not established in the library",
+        "Applicable safety and certification requirements for the client"
+      ],
+      "next_step": "A readiness discussion on edge infrastructure and integration prerequisites before a physical AI procurement decision"
+    },
+    {
+      "id": "O07",
+      "title": "Reducing PLM migration risk by treating partner access control as a first-class decision",
+      "thesis": "For a manufacturer migrating off Agile PLM, the choice that most affects external collaboration risk is how released-item visibility and editing are governed in the target system, and that access-control design should be scoped early rather than treated as a post-migration cleanup.",
+      "primary_reader": "VP of Engineering or a PLM owner deciding on a migration path and how to govern external partner access to product data",
+      "business_decision": "How to give external partners controlled access to product information through a migration without exposing released items or over-granting edit rights",
+      "technical_decision": "Model attribute-based and permission policies in the target PLM during migration versus deferring access design until after data is moved, which trades early configuration effort for lower risk of exposure at cutover",
+      "alternatives": [
+        "Design permissions and attribute-based policies as part of the migration, adding scope but controlling partner visibility from go-live",
+        "Migrate data first and layer access controls afterward, which is simpler initially but risks a period of over-broad or misconfigured access"
+      ],
+      "why_now": "The July 12 to 19 and July 19 to 26 digests report Oracle expanding agentic and AI-native capability inside Fusion applications, prompting Agile PLM customers to reassess their platform and migration path in the second half of 2026",
+      "why_xavor": "Xavor advertises Agile-to-Aras and Agile-to-Propel migration services and reports implementing partner access controls with attribute-based policies in an Agile-to-Aras context, which substantiates access-control migration work, though the case principally covers access control rather than end-to-end migration and no completed Propel case is established",
+      "offering_ids": [
+        "plm-migration"
+      ],
+      "evidence": [
+        {
+          "kind": "corpus",
+          "ref": "C0077",
+          "claim": "The July 12 to 19 digest reports Oracle launched an AI-native builder for Fusion agentic applications, raising platform reassessment for Oracle-ecosystem customers",
+          "basis": "source_report",
+          "quote": "create Fusion Agentic Applications natively within Oracle Fusion Cloud Applications"
+        },
+        {
+          "kind": "case",
+          "ref": "aras-partner-access",
+          "claim": "Xavor reports implementing partner access controls with attribute-based policies during an Agile-to-Aras migration",
+          "basis": "source_report",
+          "quote": "Aras permissions and attribute-based policies governed released-item visibility and editing"
+        }
+      ],
+      "unknowns": [
+        "No completed Propel migration case is established in the library",
+        "The Aras case substantiates access-control work rather than every aspect of an end-to-end migration"
+      ],
+      "next_step": "A migration-planning discussion on target PLM selection and how partner access controls should be designed during the migration"
+    }
+  ]
+}

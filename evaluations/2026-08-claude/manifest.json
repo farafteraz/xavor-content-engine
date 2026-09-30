@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "recovered_for_human_review",
+  "month": "2026-08",
+  "created_at": "2026-09-30T03:08:36.379814+00:00",
+  "corpus_sha256": "2cdb4c4d1fd570ff18ea1c72e7224e55fc674f41b29f331d9c18e8868153f451",
+  "history_status": "unknown",
+  "human_approval": null,
+  "routes": {
+    "strategy": [
+      "anthropic",
+      "claude-opus-4-8"
+    ],
+    "editor": [
+      "anthropic",
+      "claude-opus-4-8"
+    ]
+  },
+  "code_revision": "c479eb13f8b80f2c79ac411c22824b935fc695a1",
+  "inputs_sha256": "a808453ed235bc562bfa813bb537e4168708ed29ea350b545ae7e902ec35afa8",
+  "prompts_sha256": "712c81ce4cbd6e096e1395583f983f30f13224d9a2341f04782831734519ccf2",
+  "error_type": "ValueError",
+  "note": "No approved output. Inspect saved stage responses locally; rerun into a new directory.",
+  "workflow_status": "failed_validation",
+  "recovery_audit": "recovery-audit.json"
+}

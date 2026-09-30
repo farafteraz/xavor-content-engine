@@ -1,0 +1,246 @@
+{
+  "reviews": [
+    {
+      "id": "O01",
+      "decision": "revise",
+      "scores": {
+        "relevance": 4,
+        "originality": 4,
+        "evidence": 4,
+        "commercial_value": 4,
+        "buyer_depth": 4
+      },
+      "reason": "Review-gate correction: the raw critic recommended keep despite unresolved prerequisites or qualified evidence. The candidate remains unapproved. Raw critic rationale follows: A specific buying situation for a ServiceNow-owning CIO in the confirmed 50-1,000 audience, with a genuine architectural tradeoff (governed system of action versus point-to-point agent credentials) that changes an implementation decision. The thesis names a real technical fork and connects business accountability to execution routing. Evidence is carefully qualified: the ServiceNow GA is attributed to the digest as expected, and the vendor-access case is used as adjacent workflow experience without claiming delivered agent-governance projects. The unknowns explicitly flag the absence of AI Control Tower delivery. Offerings (servicenow-implementation, workflow-automation) match the cataloged capabilities and proof.",
+      "required_changes": [
+        "Resolve or explicitly scope out each recorded prerequisite: Whether Xavor has delivered any AI Control Tower or agent-governance configuration",
+        "Resolve or explicitly scope out each recorded prerequisite: Which regulatory obligations apply to the specific client's agent actions",
+        "Replace the centralized-versus-weakly-controlled comparison with credible centralized and distributed authorization designs. Remove the unsupported claim that execution location alone determines safety."
+      ],
+      "evidence_checks": [
+        {
+          "index": 0,
+          "status": "supported",
+          "reason": "C0199 contains 'general availability is expected in August 2026' and the claim keeps the 'expected' qualifier, correctly treating this as a digest report of a future GA rather than an accomplished fact. Supports the why_now."
+        },
+        {
+          "index": 1,
+          "status": "supported",
+          "reason": "C0199 contains 'identity-verified and fully auditable' describing ServiceNow's governed execution. The claim attributes it to the digest as a platform description. Supports the architecture framing without overclaiming Xavor delivery."
+        },
+        {
+          "index": 2,
+          "status": "supported",
+          "reason": "servicenow-vendor-access case reusable_claim reports a governed vendor-access workflow with 'a dedicated access register, renewal reminders, and removal tasks'. Used as adjacent evidence of intake/approval/expiry work, not as proof of agent governance, consistent with case limits noting removal tasks do not establish automatic downstream revocation. Supports why_xavor within scope."
+        }
+      ]
+    },
+    {
+      "id": "O02",
+      "decision": "revise",
+      "scores": {
+        "relevance": 4,
+        "originality": 3,
+        "evidence": 4,
+        "commercial_value": 3,
+        "buyer_depth": 4
+      },
+      "reason": "Review-gate correction: the raw critic recommended keep despite unresolved prerequisites or qualified evidence. The candidate remains unapproved. Raw critic rationale follows: A concrete decision for a cloud-budget owner about whether to fund attribution engineering at design time versus relying on aggregated tenant reporting, with a real technical consequence rooted in agentic call fan-out. Relevant to the confirmed audience and to data-engineering/cloud offerings. Evidence is accurately attributed to the FinOps digest and to the real-estate data case, and the why_xavor correctly notes cost-governance tooling is not itself a cataloged delivered result. Originality is defensible but overlaps the baseline's D8/N3 cost-attribution thesis; the candidate's design-time-versus-retrofit framing adds a distinct decision hook. Commercial value is credible but the Xavor role rests on adjacent data-quality experience rather than a delivered FinOps engagement, which the unknowns acknowledge.",
+      "required_changes": [
+        "Resolve or explicitly scope out each recorded prerequisite: Whether Xavor has delivered a cost-attribution or FinOps engagement",
+        "Resolve or explicitly scope out each recorded prerequisite: Client cloud provider mix and current tagging maturity",
+        "Treat cost attribution as an engineering hypothesis; the data-quality case does not establish FinOps delivery or prove cloud dashboards cannot provide the required granularity."
+      ],
+      "evidence_checks": [
+        {
+          "index": 0,
+          "status": "supported",
+          "reason": "C0206 contains '98% of FinOps teams now manage AI spend' and identifies granular AI spend monitoring as the #1 requested capability. Attribution to the digest and the 2026 State of FinOps is accurate. Supports why_now."
+        },
+        {
+          "index": 1,
+          "status": "supported",
+          "reason": "C0206 contains 'commercial tooling has not delivered this at scale'. Correctly quoted and framed as a digest report, supporting the argument that native tools leave an attribution gap."
+        },
+        {
+          "index": 2,
+          "status": "supported",
+          "reason": "real-estate-data-governance technical_choice lists 'Purview quality rules, Athena scans, Python customer matching, and Power BI models and dashboards'. Supports data-quality and dashboard capability, but this is standalone data/BI experience and does not demonstrate cost-attribution or FinOps delivery; the candidate keeps that distinction, so the claim is supported within its stated scope."
+        }
+      ]
+    },
+    {
+      "id": "O03",
+      "decision": "revise",
+      "scores": {
+        "relevance": 4,
+        "originality": 3,
+        "evidence": 4,
+        "commercial_value": 4,
+        "buyer_depth": 4
+      },
+      "reason": "Review-gate correction: the raw critic recommended keep despite unresolved prerequisites or qualified evidence. The candidate remains unapproved. Raw critic rationale follows: A clear foundation-first-versus-scale decision for a CDO or VP of Data, with a defensible technical tradeoff between semantic/quality investment and reactive remediation. Fits the confirmed audience and keeps data-engineering and BI in both standalone and AI-supporting roles per strategy. Evidence is accurately attributed to Gartner via the digest and to the advertised data-and-bi capability, which explicitly covers 'foundations for AI'. Originality overlaps the baseline N2 context-layer territory, but the candidate frames a distinct prioritization decision for the buyer rather than a market observation. Buyer depth is strong because the alternatives carry real accuracy and rework consequences.",
+      "required_changes": [
+        "Resolve or explicitly scope out each recorded prerequisite: Client's current semantic layer and catalog maturity",
+        "Resolve or explicitly scope out each recorded prerequisite: Which data domains the agents would query",
+        "Address evidence item 1: The quote 'data quality management has overtaken AI initiatives as the top CDO concern' matches C0229, but the corpus attributes it to a global benchmark study reported in a practitioner outlet (itbrief.co.nz), and the baseline ledger E35 phrases it as 'top-ranked concern among data leaders'. The claim is supported as a digest report; the 'top CDO concern' specificity should retain its benchmark-study attribution rather than be presented as established fact.",
+        "Compare staged data remediation with a broader semantic-layer investment. The existing alternatives make the second option artificially weak; verify the claim that data readiness matters more than model selection."
+      ],
+      "evidence_checks": [
+        {
+          "index": 0,
+          "status": "supported",
+          "reason": "C0208 contains 'are far more likely to hallucinate, introduce bias and produce unreliable results' attributed to Gartner's Sallam. The claim preserves the Gartner attribution and treats the 80%/60% projection cautiously by not quoting the disputed figures here. Supports why_now."
+        },
+        {
+          "index": 1,
+          "status": "qualified",
+          "reason": "The quote 'data quality management has overtaken AI initiatives as the top CDO concern' matches C0229, but the corpus attributes it to a global benchmark study reported in a practitioner outlet (itbrief.co.nz), and the baseline ledger E35 phrases it as 'top-ranked concern among data leaders'. The claim is supported as a digest report; the 'top CDO concern' specificity should retain its benchmark-study attribution rather than be presented as established fact."
+        },
+        {
+          "index": 2,
+          "status": "supported",
+          "reason": "data-and-bi-services supported_scope includes 'modeling, governance, and Power BI or Tableau reporting, including foundations for AI'. Accurately quoted and used as an advertised capability, with the standalone role preserved per the offering limits."
+        }
+      ]
+    },
+    {
+      "id": "O04",
+      "decision": "revise",
+      "scores": {
+        "relevance": 4,
+        "originality": 4,
+        "evidence": 4,
+        "commercial_value": 4,
+        "buyer_depth": 4
+      },
+      "reason": "Review-gate correction: the raw critic recommended keep despite unresolved prerequisites or qualified evidence. The candidate remains unapproved. Raw critic rationale follows: A strong, differentiated opportunity: the local-versus-managed inference tradeoff for sensitive documents is a genuine architecture decision the private-supply-chain case directly demonstrates, including the phased shift from PrivateGPT/Ollama to Bedrock for concurrency. This is not in the baseline territories, giving it originality. Evidence handling is careful: unknowns flag the unresolved final hosting boundary and the absence of verified Enterprise Knowledge Agent product availability, matching the case limits that warn against on-premises-only claims and product-availability inference. Offerings (ai-use-case-development, chatbots) match the case offer_refs.",
+      "required_changes": [
+        "Resolve or explicitly scope out each recorded prerequisite: The final hosting boundary of the referenced implementation is unclear",
+        "Resolve or explicitly scope out each recorded prerequisite: Which specific regulatory requirements apply to the client's documents",
+        "Resolve or explicitly scope out each recorded prerequisite: No verified availability of the named Enterprise Knowledge Agent product",
+        "Correct the why_now digest window: evidence C0081 comes from July 12–19, not July 26–August 2. Remove the uncited EU-obligations hook and avoid assuming cloud deployment necessarily sacrifices control."
+      ],
+      "evidence_checks": [
+        {
+          "index": 0,
+          "status": "supported",
+          "reason": "C0081 contains 'private endpoints for imported models, enabling production AI workloads that require private connectivity'. The claim correctly cites the July 12-19 digest (not the July 26-Aug 2 window stated in why_now text) as an OCI capability report. Minor date-window imprecision in the why_now prose, but the evidence itself is accurately quoted and attributed."
+        },
+        {
+          "index": 1,
+          "status": "supported",
+          "reason": "private-supply-chain-knowledge technical_choice is 'Initial PrivateGPT/Ollama implementation followed by AWS Bedrock to address concurrency and performance constraints'. Directly supports the architecture-tradeoff thesis. The candidate honors the case limits by not claiming an entirely on-premises final system and by flagging the unclear hosting boundary and unverified product."
+        }
+      ]
+    },
+    {
+      "id": "O05",
+      "decision": "revise",
+      "scores": {
+        "relevance": 4,
+        "originality": 3,
+        "evidence": 3,
+        "commercial_value": 3,
+        "buyer_depth": 3
+      },
+      "reason": "Review-gate correction: the raw critic recommended keep despite unresolved prerequisites or qualified evidence. The candidate remains unapproved. Raw critic rationale follows: A defensible decision for a Salesforce-owning service leader about instrumenting knowledge quality and outcome analytics before adopting pay-per-resolution. Relevant to the confirmed audience and to workflow-automation and chatbots offerings. Evidence is accurate and the why_xavor correctly labels the retail case as adjacent, not proof of a managed-service contract or the recommendation product. Originality is moderate given the baseline N4 resolution-rate territory covers the same terrain; the candidate's instrument-before-adopt framing is a usable but not novel angle. Buyer depth is adequate but the technical alternatives are more operational than architectural. The unknowns appropriately flag unverified Salesforce certification and no ongoing managed-service contract.",
+      "required_changes": [
+        "Resolve or explicitly scope out each recorded prerequisite: Whether Xavor holds current Salesforce delivery certifications for this work",
+        "Resolve or explicitly scope out each recorded prerequisite: No verified ongoing Salesforce managed-service contract in the library",
+        "Address evidence item 2: The quote 'integrating specialist retail-support agents with Salesforce and product data' matches the retail-salesforce-agents reusable_claim, but the case limits state this is adjacent evidence, not proof of a managed-service contract or recommendation-engine readiness. The candidate correctly qualifies why_xavor, so the claim supports the argument only in its adjacent, custom-integration scope.",
+        "Compare outcome definition, reopen/escalation handling, and measurement ownership across viable rollout approaches. Certification and managed-service availability are not prerequisites if neither is claimed."
+      ],
+      "evidence_checks": [
+        {
+          "index": 0,
+          "status": "supported",
+          "reason": "C0197 contains 'a flat **$2 per autonomously resolved issue**' in the July 26-Aug 2 digest. Accurately quoted and attributed as a digest report. Supports why_now."
+        },
+        {
+          "index": 1,
+          "status": "supported",
+          "reason": "C0197 contains adoption 'grown from **39% in 2025 to 66% in 2026**' attributed to a Salesforce survey. Accurately quoted; the claim keeps it as a reported figure. Supports the timeliness argument."
+        },
+        {
+          "index": 2,
+          "status": "qualified",
+          "reason": "The quote 'integrating specialist retail-support agents with Salesforce and product data' matches the retail-salesforce-agents reusable_claim, but the case limits state this is adjacent evidence, not proof of a managed-service contract or recommendation-engine readiness. The candidate correctly qualifies why_xavor, so the claim supports the argument only in its adjacent, custom-integration scope."
+        }
+      ]
+    },
+    {
+      "id": "O06",
+      "decision": "revise",
+      "scores": {
+        "relevance": 3,
+        "originality": 3,
+        "evidence": 3,
+        "commercial_value": 3,
+        "buyer_depth": 3
+      },
+      "reason": "Review-gate correction: the raw critic recommended keep despite unresolved prerequisites or qualified evidence. The candidate remains unapproved. Raw critic rationale follows: A defensible physical-AI readiness decision for an industrial VP of Engineering, with an edge-versus-cloud processing tradeoff that is grounded in the companion-robot case's actual architecture. Relevant to the nvidia-physical-ai offering and audience. Evidence is honestly qualified: the unknowns flag that Xavor's robotics work is controlled testing not production, that MES/OT integration is not established, and that safety certification is not proven, matching the case limits. Originality overlaps baseline N5. The weakness the evidence warrants: the why_now leans on the BMW/Figure scale-up, but Xavor's own proof does not extend to manufacturing production integration, so the commercial argument depends on transferring eldercare-robot experience to a factory context the library does not substantiate. This keeps scores at defensible rather than strong.",
+      "required_changes": [
+        "Resolve or explicitly scope out each recorded prerequisite: Xavor's reported robotics work is controlled testing, not production manufacturing deployment",
+        "Resolve or explicitly scope out each recorded prerequisite: MES and OT integration experience is not established in the library",
+        "Resolve or explicitly scope out each recorded prerequisite: Applicable safety and certification requirements for the client",
+        "Address evidence item 1: companion-robot technical_choice matches 'NVIDIA Jetson Orin, computer vision, ROS navigation, and conversational components with cloud speech services'. It supports edge-perception and integration experience, but the case is controlled customer testing in eldercare, not manufacturing production or MES/OT integration. The candidate flags these gaps in unknowns, so the claim is supported only for the general integration-experience point and must not be read as manufacturing-deployment proof.",
+        "Remove the blanket claim that robot vendors do not supply integration. Do not transfer controlled eldercare testing into manufacturing production proof. Compare concrete latency and connectivity requirements rather than a generic edge/cloud split."
+      ],
+      "evidence_checks": [
+        {
+          "index": 0,
+          "status": "supported",
+          "reason": "C0211 contains 'complex sequencing tasks in production logistics' describing the BMW Figure 03 deployment. Accurately quoted and attributed as a digest report. Supports why_now as market context."
+        },
+        {
+          "index": 1,
+          "status": "qualified",
+          "reason": "companion-robot technical_choice matches 'NVIDIA Jetson Orin, computer vision, ROS navigation, and conversational components with cloud speech services'. It supports edge-perception and integration experience, but the case is controlled customer testing in eldercare, not manufacturing production or MES/OT integration. The candidate flags these gaps in unknowns, so the claim is supported only for the general integration-experience point and must not be read as manufacturing-deployment proof."
+        }
+      ]
+    },
+    {
+      "id": "O07",
+      "decision": "revise",
+      "scores": {
+        "relevance": 4,
+        "originality": 3,
+        "evidence": 2,
+        "commercial_value": 4,
+        "buyer_depth": 4
+      },
+      "reason": "The core opportunity is sound: designing partner access control as a first-class migration decision is a specific, well-supported argument backed directly by the aras-partner-access case, and it addresses a real PLM-owner buying situation with a genuine early-versus-deferred configuration tradeoff. However, the why_now is weakly connected to the thesis. The candidate anchors urgency in Oracle Fusion agentic capability, but the migration paths in the catalog are Agile-to-Aras and Agile-to-Propel, not Agile-to-Fusion; the Fusion agentic-builder news does not establish why an Agile customer would choose Aras or Propel now, and it introduces a platform (Fusion) outside the offering's stated destinations. This makes the why_now evidence a true quotation supporting an unsupported leap. The access-control thesis itself does not need the Fusion hook to justify timeliness.",
+      "required_changes": [
+        "Replace or repair the why_now so it justifies the access-control-first thesis without relying on Oracle Fusion agentic news, which is not a destination in the plm-migration catalog (Aras, Propel). Either supply a timeliness basis tied to Agile end-of-life or partner-access risk, or reframe the trigger as a request for a supported reason rather than the Fusion announcement.",
+        "State explicitly in why_xavor that the aras-partner-access case principally substantiates access-control work and does not establish end-to-end migration delivery or any Propel case, mirroring the case limits, so the argument does not imply broader delivered migration scope.",
+        "Preserve the access-control decision but drop the unsupported Oracle Fusion news hook. Do not invent an Agile end-of-life deadline to replace it."
+      ],
+      "evidence_checks": [
+        {
+          "index": 0,
+          "status": "unsupported",
+          "reason": "C0077 contains 'create Fusion Agentic Applications natively within Oracle Fusion Cloud Applications', but this substantiates Oracle Fusion agentic capability, not a reason for an Agile PLM customer to migrate to Aras or Propel, which are the catalog destinations. The quotation is real but supports an inferential leap from Fusion news to Aras/Propel migration urgency that the source does not establish. The why_now does not entail the thesis."
+        },
+        {
+          "index": 1,
+          "status": "supported",
+          "reason": "aras-partner-access technical_choice matches 'Aras permissions and attribute-based policies governed released-item visibility and editing'. Directly supports the access-control-during-migration thesis. Per the case limits, it substantiates access-control work rather than full end-to-end migration, which the required change asks to state explicitly."
+        }
+      ]
+    }
+  ],
+  "baseline_comparison": {
+    "assessment": "This run has not established that v2 is better. The preserved v1 sample includes finished drafts; v2 contains seven unapproved opportunities. Several repeat existing cost, data, Salesforce, and physical-AI territories. The raw critic contained three nonmatching baseline quotations and wrongly said neither side had finished posts. Those comparisons are not accepted in this recovered review. One directly traceable observation is retained below with a qualified editorial assessment.",
+    "observations": [
+      {
+        "baseline_file": "1-strategic-brief.md",
+        "quote": "Its Action Fabric opens a generally available MCP Server so agents built on Claude, Copilot, or a customer's own stack can trigger governed, identity-verified, auditable ServiceNow workflows headlessly",
+        "opportunity_ids": [
+          "O01"
+        ],
+        "finding": "Both v1 and O01 use the ServiceNow MCP signal. O01 makes routing agent actions the buyer decision and cites a scoped ServiceNow case. This is a candidate framing difference; the centralized-versus-distributed comparison still needs revision before claiming an improvement."
+      }
+    ]
+  },
+  "history_limit": "Novelty here can be assessed only against the supplied v1 generated baseline and within the candidate set itself. The baseline is a generated control sample, not confirmed publication history; its own status note states generated v1 outputs are not confirmed published history. Therefore no candidate can be judged new to Xavor's audience or previously unpublished. Differentiation findings describe how a candidate's opportunity framing and evidence handling compare to the baseline files and to sibling candidates, not whether any idea has appeared in real published content. All corpus-derived facts are unverified digest reports; matching a quotation establishes traceability, not truth, and digest recommendations were not treated as verified market facts."
+}

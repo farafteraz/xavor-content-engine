@@ -1,0 +1,17 @@
+{
+  "run_url": "https://github.com/farafteraz/xavor-content-engine/actions/runs/36663049597",
+  "workflow_result": "failed_validation",
+  "recovery_type": "assistant_editorial_review_no_new_model_calls",
+  "changes": [
+    "Removed non-schema index_note from O01 evidence check; substantive text retained.",
+    "O01: downgraded keep to revise; preserved model scores and source assessments as judgments, not approval.",
+    "O02: downgraded keep to revise; preserved model scores and source assessments as judgments, not approval.",
+    "O03: downgraded keep to revise; preserved model scores and source assessments as judgments, not approval.",
+    "O04: downgraded keep to revise; preserved model scores and source assessments as judgments, not approval.",
+    "O05: downgraded keep to revise; preserved model scores and source assessments as judgments, not approval.",
+    "O06: downgraded keep to revise; preserved model scores and source assessments as judgments, not approval.",
+    "Added explicit assistant editorial requirements per opportunity, including false-binary alternatives, date correction, and unsupported cross-domain claims.",
+    "Replaced the unreliable aggregate baseline assessment; discarded three nonmatching quotations and retained one verified comparison without endorsing a quality win."
+  ],
+  "approval": null
+}
